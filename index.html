@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VFZWB7KNL0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VFZWB7KNL0');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Максим Касьянов - Manual QA Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --primary-bg: #0f172a;
@@ -33,7 +42,6 @@
             line-height: 1.6;
         }
 
-        /* ПРАВА ШКАЛА ПРОГРЕСУ */
         .scroll-progress-container {
             position: fixed; top: 0; right: 0; width: 4px; height: 100%;
             background: rgba(255, 255, 255, 0.05); z-index: 9999;
@@ -42,11 +50,9 @@
             height: 0%; width: 100%; background: var(--accent);
             box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
             border-radius: 4px; 
-            /* Дуже м'яка зміна висоти */
             transition: height 0.15s cubic-bezier(0.22, 1, 0.36, 1); 
         }
 
-        /* ЛІВА БОКОВА НАВІГАЦІЯ */
         .side-nav {
             position: fixed; left: 15px; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 25px; z-index: 100;
@@ -72,13 +78,12 @@
         }
         .nav-dot:hover::after { opacity: 1; left: 20px; }
 
-        /* ОПТИМІЗОВАНА Анімація бекграунду (перенесена на відеокарту) */
         .bg-animation {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
             background: radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 30%),
                         radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.03), transparent 30%);
             animation: pulse 12s ease-in-out infinite alternate;
-            will-change: transform; /* Допомагає уникнути підвисання при старті */
+            will-change: transform;
         }
         @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
 
@@ -90,7 +95,6 @@
         h2.section-title { font-size: 2.2rem; color: var(--text-main); margin-bottom: 40px; text-align: center; position: relative; }
         h2.section-title::after { content: ''; width: 60px; height: 3px; background: var(--accent); display: block; margin: 10px auto 0; border-radius: 2px; }
 
-        /* СУПЕР М'ЯКА АНІМАЦІЯ ПОЯВИ БЛОКІВ */
         .reveal { 
             opacity: 0; 
             transform: translateY(40px); 
@@ -98,16 +102,13 @@
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* СТАРТОВА АНІМАЦІЯ ГОЛОВНОГО ЕКРАНУ (Ховає стартові підгальмовування браузера) */
         .hero { 
             display: flex; align-items: center; justify-content: space-between; gap: 40px; 
             padding: 100px 0 30px 0; border-bottom: none;
             animation: heroFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             opacity: 0; transform: translateY(20px);
         }
-        @keyframes heroFadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes heroFadeIn { to { opacity: 1; transform: translateY(0); } }
 
         .hero-text { flex: 1; }
         .hero-text h1 { font-size: 3.5rem; margin: 0 0 10px 0; }
@@ -137,7 +138,6 @@
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
         @keyframes scrollWheel { 0% { top: 6px; opacity: 1; } 100% { top: 18px; opacity: 0; } }
 
-        /* Hover ефекти карток стали плавнішими */
         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .skill-box { background: var(--secondary-bg); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s; }
         .skill-box:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); border-color: rgba(56, 189, 248, 0.3); }
@@ -163,7 +163,6 @@
         .info-card:hover { transform: translateY(-5px); border-color: rgba(56, 189, 248, 0.2); }
         .info-card h3 { color: var(--accent); margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;}
 
-        /* Адаптивність */
         @media (max-width: 900px) {
             .side-nav { display: none; }
             .container { padding: 0 20px; }
@@ -196,10 +195,10 @@
             <div class="hero-text">
                 <h1>Максим <span>Касьянов</span></h1>
                 <h2>Manual QA Engineer (Trainee/Junior)</h2>
-                <p>Орієнтований на старт кар'єри в тестуванні ПЗ. Маю практичні навички функціонального тестування веб та мобільних застосунків, створення тестової документації та оформлення баг-репортів. Уважний до деталей, швидко навчаюсь та націлений на розвиток у QA.</p>
+                <p>Орієнтований на старт кар'єри в тестуванні ПЗ. Маю практичні навички функціонального тестування веб та мобільних застосунків, створення тестової документації та оформлення баг-репортів.</p>
                 
                 <ul class="contact-list">
-                    <li><i class="fa-solid fa-location-dot"></i> м. Житомир, Україна (Формат: Remote)</li>
+                    <li><i class="fa-solid fa-location-dot"></i> м. Житомир, Україна</li>
                     <li><i class="fa-solid fa-phone"></i> <a href="tel:+380756151781">+380 75 615 17 81</a></li>
                     <li><i class="fa-solid fa-envelope"></i> <a href="mailto:kasyanowmax@gmail.com">kasyanowmax@gmail.com</a></li>
                     <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/max-kasjanow-ba493b39b/" target="_blank">LinkedIn Профіль</a></li>
@@ -262,11 +261,10 @@
                     <div class="timeline-content">
                         <ul>
                             <li>Практичне тестування різних веб-сайтів та веб-додатків.</li>
-                            <li>Підготовка тестової документації: написання чек-листів та тест-кейсів.</li>
-                            <li>Робота в TestRail: створення та ведення тест-кейсів, запуск тест-прогонів.</li>
-                            <li>Реєстрація дефектів у Jira із повним описом (Steps to Reproduce).</li>
-                            <li>Використання Chrome DevTools для аналізу помилок (Console, Network).</li>
-                            <li>Практика API testing у Postman (статус-коди, параметри).</li>
+                            <li>Підготовка тестової документації: чек-листи та тест-кейси.</li>
+                            <li>Робота в TestRail та реєстрація дефектів у Jira.</li>
+                            <li>Використання Chrome DevTools для аналізу мережі та помилок.</li>
+                            <li>Практика API testing у Postman та робота з SQL.</li>
                         </ul>
                     </div>
                 </div>
@@ -282,8 +280,8 @@
                     <div class="timeline-company">Reseller, Україна</div>
                     <div class="timeline-content">
                         <ul>
-                            <li>Контроль отримання товару та перевірка відповідності характеристик.</li>
-                            <li>Робота з документацією, аналіз ринку.</li>
+                            <li>Контроль отримання товару та перевірка характеристик.</li>
+                            <li>Робота з документацією та аналіз ринку.</li>
                         </ul>
                         <div class="qa-relevance"><strong>Релевантно для QA:</strong> перевірка відповідності вимогам, контроль якості.</div>
                     </div>
@@ -295,7 +293,7 @@
                     <div class="timeline-content">
                         <ul>
                             <li>Діагностика несправностей та визначення причин проблем.</li>
-                            <li>Аналіз скарг клієнтів, уточнення вимог.</li>
+                            <li>Аналіз скарг клієнтів та перевірка результату ремонту.</li>
                         </ul>
                         <div class="qa-relevance"><strong>Релевантно для QA:</strong> пошук причин дефектів, системний аналіз.</div>
                     </div>
@@ -309,7 +307,7 @@
                 <div class="info-card">
                     <h3><i class="fa-solid fa-graduation-cap"></i> Освіта</h3>
                     <p><strong>Менеджмент ЗЕД</strong><br>Донецький державний університет управління</p>
-                    <p><strong>Методології:</strong> SDLC/STLC, Agile/Scrum, ISTQB Foundation (базові знання).</p>
+                    <p><strong>Методології:</strong> SDLC/STLC, Agile/Scrum, ISTQB (базово).</p>
                 </div>
                 <div class="info-card">
                     <h3><i class="fa-solid fa-certificate"></i> QA Курси</h3>
@@ -367,7 +365,6 @@
 
         sections.forEach(section => observer.observe(section));
 
-        // Оптимізація скролу через requestAnimationFrame (прибирає ривки)
         let ticking = false;
         window.addEventListener("scroll", () => {
             if (!ticking) {
@@ -380,7 +377,6 @@
             }
         });
         
-        // Стартовий запуск
         reveal();
         updateProgressBar();
     </script>
