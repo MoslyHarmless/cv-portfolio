@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Максим Касьянов - Manual QA Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --secondary-bg: #1e293b;
+            --accent: #38bdf8;
+            --accent-hover: #7dd3fc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { box-sizing: border-box; }
+
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        html {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ПРАВА ШКАЛА ПРОГРЕСУ */
+        .scroll-progress-container {
+            position: fixed; top: 0; right: 0; width: 4px; height: 100%;
+            background: rgba(255, 255, 255, 0.05); z-index: 9999;
+        }
+        .scroll-progress-bar {
+            height: 0%; width: 100%; background: var(--accent);
+            box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+            border-radius: 4px; 
+            /* Дуже м'яка зміна висоти */
+            transition: height 0.15s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+
+        /* ЛІВА БОКОВА НАВІГАЦІЯ */
+        .side-nav {
+            position: fixed; left: 15px; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 25px; z-index: 100;
+        }
+        .side-nav::before {
+            content: ''; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 2px;
+            background: rgba(255,255,255,0.1); z-index: -1;
+        }
+        .nav-dot {
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--text-muted); text-decoration: none;
+            position: relative; transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-dot:hover, .nav-dot.active {
+            background: var(--accent); box-shadow: 0 0 12px var(--accent); transform: scale(1.4);
+        }
+        .nav-dot::after {
+            content: attr(data-tooltip); position: absolute; left: 25px; top: 50%; transform: translateY(-50%);
+            background: var(--secondary-bg); color: var(--text-main);
+            padding: 5px 12px; border-radius: 6px; font-size: 0.85rem;
+            white-space: nowrap; opacity: 0; pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .nav-dot:hover::after { opacity: 1; left: 20px; }
+
+        /* ОПТИМІЗОВАНА Анімація бекграунду (перенесена на відеокарту) */
+        .bg-animation {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background: radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 30%),
+                        radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.03), transparent 30%);
+            animation: pulse 12s ease-in-out infinite alternate;
+            will-change: transform; /* Допомагає уникнути підвисання при старті */
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 30px 0 50px; }
+        
+        section { padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        section:last-child { border-bottom: none; }
+
+        h2.section-title { font-size: 2.2rem; color: var(--text-main); margin-bottom: 40px; text-align: center; position: relative; }
+        h2.section-title::after { content: ''; width: 60px; height: 3px; background: var(--accent); display: block; margin: 10px auto 0; border-radius: 2px; }
+
+        /* СУПЕР М'ЯКА АНІМАЦІЯ ПОЯВИ БЛОКІВ */
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(40px); 
+            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* СТАРТОВА АНІМАЦІЯ ГОЛОВНОГО ЕКРАНУ (Ховає стартові підгальмовування браузера) */
+        .hero { 
+            display: flex; align-items: center; justify-content: space-between; gap: 40px; 
+            padding: 100px 0 30px 0; border-bottom: none;
+            animation: heroFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0; transform: translateY(20px);
+        }
+        @keyframes heroFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3.5rem; margin: 0 0 10px 0; }
+        .hero-text h1 span { color: var(--accent); }
+        .hero-text h2 { font-size: 1.8rem; color: var(--text-muted); font-weight: 400; margin-top: 0; }
+        .hero-text p { font-size: 1.1rem; max-width: 600px; margin-bottom: 25px; }
+        
+        .contact-list { list-style: none; padding: 0; margin-bottom: 30px; }
+        .contact-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .contact-list a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+        .contact-list a:hover { color: var(--accent-hover); }
+
+        .hero-image { flex: 1; display: flex; justify-content: flex-end; }
+        .hero-image img { 
+            width: 100%; max-width: 380px; height: auto; border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 2px solid rgba(56, 189, 248, 0.2); 
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s; 
+        }
+        .hero-image img:hover { transform: translateY(-10px); border-color: var(--accent); }
+
+        .scroll-indicator-wrapper { width: 100%; display: flex; justify-content: center; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .scroll-indicator { display: flex; flex-direction: column; align-items: center; opacity: 0.7; animation: bounce 2s infinite; text-decoration: none; color: var(--text-muted); }
+        .scroll-indicator span { font-size: 0.8rem; margin-top: 8px; letter-spacing: 1px; }
+        .mouse { width: 26px; height: 40px; border: 2px solid var(--text-muted); border-radius: 15px; position: relative; }
+        .wheel { width: 4px; height: 8px; background: var(--accent); border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: scrollWheel 2s infinite; }
+        
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+        @keyframes scrollWheel { 0% { top: 6px; opacity: 1; } 100% { top: 18px; opacity: 0; } }
+
+        /* Hover ефекти карток стали плавнішими */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .skill-box { background: var(--secondary-bg); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s; }
+        .skill-box:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); border-color: rgba(56, 189, 248, 0.3); }
+        .skill-box h3 { color: var(--accent); margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .tag { background: rgba(56,189,248,0.1); color: var(--text-main); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(56,189,248,0.2); transition: all 0.3s; }
+        .tag:hover { background: rgba(56,189,248,0.2); border-color: var(--accent); }
+
+        .timeline { border-left: 2px solid var(--accent); padding-left: 30px; position: relative; margin-left: 15px; }
+        .timeline-item { margin-bottom: 40px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -39px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--primary-bg); border: 2px solid var(--accent); transition: all 0.3s; }
+        .timeline-item:hover::before { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+        .timeline-date { color: var(--accent); font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; }
+        .timeline-title { font-size: 1.3rem; margin: 0 0 5px 0; }
+        .timeline-company { color: var(--text-muted); font-weight: 500; margin-bottom: 15px; }
+        .timeline-content ul { padding-left: 20px; color: var(--text-muted); }
+        .timeline-content li { margin-bottom: 8px; }
+        .qa-relevance { background: rgba(56, 189, 248, 0.05); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent); margin-top: 15px; transition: background 0.3s; }
+        .qa-relevance:hover { background: rgba(56, 189, 248, 0.1); }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .info-card { background: var(--secondary-bg); padding: 25px; border-radius: 12px; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); border: 1px solid rgba(255,255,255,0.02); }
+        .info-card:hover { transform: translateY(-5px); border-color: rgba(56, 189, 248, 0.2); }
+        .info-card h3 { color: var(--accent); margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;}
+
+        /* Адаптивність */
+        @media (max-width: 900px) {
+            .side-nav { display: none; }
+            .container { padding: 0 20px; }
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 60px; padding-bottom: 30px;}
+            .hero-image { justify-content: center; width: 100%; }
+            .hero-image img { max-width: 280px; }
+            .contact-list li { justify-content: center; }
+            h2.section-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="progressBar"></div>
+    </div>
+
+    <nav class="side-nav">
+        <a href="#home" class="nav-dot active" data-tooltip="Головна"></a>
+        <a href="#skills" class="nav-dot" data-tooltip="Навички"></a>
+        <a href="#practice" class="nav-dot" data-tooltip="QA Практика"></a>
+        <a href="#experience" class="nav-dot" data-tooltip="Досвід роботи"></a>
+        <a href="#education" class="nav-dot" data-tooltip="Освіта та Мови"></a>
+    </nav>
+
+    <div class="bg-animation"></div>
+
+    <div class="container">
+        <section id="home" class="hero">
+            <div class="hero-text">
+                <h1>Максим <span>Касьянов</span></h1>
+                <h2>Manual QA Engineer (Trainee/Junior)</h2>
+                <p>Орієнтований на старт кар'єри в тестуванні ПЗ. Маю практичні навички функціонального тестування веб та мобільних застосунків, створення тестової документації та оформлення баг-репортів. Уважний до деталей, швидко навчаюсь та націлений на розвиток у QA.</p>
+                
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-location-dot"></i> м. Житомир, Україна (Формат: Remote)</li>
+                    <li><i class="fa-solid fa-phone"></i> <a href="tel:+380756151781">+380 75 615 17 81</a></li>
+                    <li><i class="fa-solid fa-envelope"></i> <a href="mailto:kasyanowmax@gmail.com">kasyanowmax@gmail.com</a></li>
+                    <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/max-kasjanow-ba493b39b/" target="_blank">LinkedIn Профіль</a></li>
+                </ul>
+            </div>
+            <div class="hero-image">
+                <img src="grok-image-32b37985-17ae-4992-a457-237c96841b92.jpg" alt="Максим Касьянов">
+            </div>
+        </section>
+
+        <div class="scroll-indicator-wrapper">
+            <a href="#skills" class="scroll-indicator">
+                <div class="mouse"><div class="wheel"></div></div>
+                <span>Scroll</span>
+            </a>
+        </div>
+
+        <section id="skills" class="reveal">
+            <h2 class="section-title">Ключові навички</h2>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <h3><i class="fa-solid fa-vial"></i> Види тестування</h3>
+                    <div class="tags">
+                        <span class="tag">Manual Testing</span>
+                        <span class="tag">Functional Testing</span>
+                        <span class="tag">Regression Testing</span>
+                        <span class="tag">Smoke / Sanity</span>
+                        <span class="tag">UI/UX Testing</span>
+                        <span class="tag">Exploratory Testing</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3><i class="fa-solid fa-file-signature"></i> Документація</h3>
+                    <div class="tags">
+                        <span class="tag">Test Cases</span>
+                        <span class="tag">Checklists</span>
+                        <span class="tag">Bug Reports</span>
+                        <span class="tag">Severity / Priority</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3><i class="fa-solid fa-screwdriver-wrench"></i> Інструменти</h3>
+                    <div class="tags">
+                        <span class="tag">Jira / Trello</span>
+                        <span class="tag">TestRail</span>
+                        <span class="tag">Chrome DevTools</span>
+                        <span class="tag">Postman (API)</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Git / GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="practice" class="reveal">
+            <h2 class="section-title">Навчальний досвід у QA</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 class="timeline-title">Практика Manual QA</h3>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Практичне тестування різних веб-сайтів та веб-додатків.</li>
+                            <li>Підготовка тестової документації: написання чек-листів та тест-кейсів.</li>
+                            <li>Робота в TestRail: створення та ведення тест-кейсів, запуск тест-прогонів.</li>
+                            <li>Реєстрація дефектів у Jira із повним описом (Steps to Reproduce).</li>
+                            <li>Використання Chrome DevTools для аналізу помилок (Console, Network).</li>
+                            <li>Практика API testing у Postman (статус-коди, параметри).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="reveal">
+            <h2 class="section-title">Досвід роботи</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Грудень 2020 — Січень 2022</div>
+                    <h3 class="timeline-title">Менеджер із закупівель</h3>
+                    <div class="timeline-company">Reseller, Україна</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Контроль отримання товару та перевірка відповідності характеристик.</li>
+                            <li>Робота з документацією, аналіз ринку.</li>
+                        </ul>
+                        <div class="qa-relevance"><strong>Релевантно для QA:</strong> перевірка відповідності вимогам, контроль якості.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Грудень 2014 — Листопад 2020</div>
+                    <h3 class="timeline-title">Спеціаліст з діагностики</h3>
+                    <div class="timeline-company">ComPC, Маріуполь</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Діагностика несправностей та визначення причин проблем.</li>
+                            <li>Аналіз скарг клієнтів, уточнення вимог.</li>
+                        </ul>
+                        <div class="qa-relevance"><strong>Релевантно для QA:</strong> пошук причин дефектів, системний аналіз.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="reveal">
+            <h2 class="section-title">Освіта, Курси та Мови</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Освіта</h3>
+                    <p><strong>Менеджмент ЗЕД</strong><br>Донецький державний університет управління</p>
+                    <p><strong>Методології:</strong> SDLC/STLC, Agile/Scrum, ISTQB Foundation (базові знання).</p>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-certificate"></i> QA Курси</h3>
+                    <ul style="padding-left: 20px; color: var(--text-muted);">
+                        <li>QA Popelyha</li>
+                        <li>ITVDN</li>
+                        <li>Udemy</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-language"></i> Мови</h3>
+                    <ul style="padding-left: 20px; color: var(--text-muted);">
+                        <li><strong>Українська:</strong> Вільно</li>
+                        <li><strong>Російська:</strong> Вільно</li>
+                        <li><strong>Англійська:</strong> B1 (Intermediate)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight + 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        function updateProgressBar() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.height = scrolled + "%";
+        }
+
+        const sections = document.querySelectorAll("section");
+        const navDots = document.querySelectorAll(".nav-dot");
+        const observerOptions = { root: null, rootMargin: "-20% 0px -70% 0px", threshold: 0 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navDots.forEach(dot => dot.classList.remove("active"));
+                    const id = entry.target.getAttribute("id");
+                    const activeDot = document.querySelector(`.nav-dot[href="#${id}"]`);
+                    if (activeDot) activeDot.classList.add("active");
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Оптимізація скролу через requestAnimationFrame (прибирає ривки)
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    reveal();
+                    updateProgressBar();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+        
+        // Стартовий запуск
+        reveal();
+        updateProgressBar();
+    </script>
+</body>
+</html>
