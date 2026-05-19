@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Offer AI Resume icon</title>
+  <desc id="desc">Rounded app icon with a resume document and AI sparkle.</desc>
+  <defs>
+    <linearGradient id="bg" x1="52" y1="56" x2="460" y2="456" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7c3aed"/>
+      <stop offset="0.48" stop-color="#db2777"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#581c87" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+  <path d="M164 96h136l64 64v256H164V96Z" fill="#ffffff" filter="url(#shadow)"/>
+  <path d="M300 96v64h64" fill="#f1f5f9"/>
+  <circle cx="232" cy="213" r="38" fill="#7c3aed"/>
+  <path d="M179 310c14-41 39-61 75-61s61 20 75 61" fill="none" stroke="#7c3aed" stroke-width="22" stroke-linecap="round"/>
+  <path d="M205 348h112M205 382h86" stroke="#64748b" stroke-width="20" stroke-linecap="round"/>
+  <path d="M373 206l12 34 34 12-34 12-12 34-12-34-34-12 34-12 12-34Z" fill="#fbbf24" stroke="#ffffff" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M133 142l8 23 23 8-23 8-8 23-8-23-23-8 23-8 8-23Z" fill="#ffffff" opacity="0.9"/>
+</svg>

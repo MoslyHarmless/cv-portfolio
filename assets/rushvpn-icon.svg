@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">RushVPN icon</title>
+  <desc id="desc">Rounded app icon with a shield and lightning bolt.</desc>
+  <defs>
+    <linearGradient id="bg" x1="72" y1="44" x2="440" y2="468" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f172a"/>
+      <stop offset="0.48" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+  <path d="M256 92l138 50v103c0 91-55 148-138 184-83-36-138-93-138-184V142l138-50Z" fill="rgba(255,255,255,0.16)" stroke="#ffffff" stroke-width="28" stroke-linejoin="round" filter="url(#shadow)"/>
+  <path d="M274 143l-92 139h69l-18 92 99-143h-72l14-88Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M154 113h204" stroke="#67e8f9" stroke-width="20" stroke-linecap="round" opacity="0.9"/>
+  <path d="M171 408h170" stroke="#ffffff" stroke-width="18" stroke-linecap="round" opacity="0.72"/>
+</svg>
