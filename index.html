@@ -26,11 +26,12 @@
 
         * { box-sizing: border-box; }
 
-        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        ::-webkit-scrollbar { width: 8px; background: rgba(15, 23, 42, 0.9); }
+        ::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.5); border-radius: 8px; }
         html {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(56, 189, 248, 0.5) rgba(15, 23, 42, 0.9);
+            scroll-behavior: auto;
         }
 
         body, html {
@@ -45,12 +46,13 @@
         .scroll-progress-container {
             position: fixed; top: 0; right: 0; width: 4px; height: 100%;
             background: rgba(255, 255, 255, 0.05); z-index: 9999;
+            pointer-events: none;
         }
         .scroll-progress-bar {
             height: 0%; width: 100%; background: var(--accent);
             box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
             border-radius: 4px; 
-            transition: height 0.15s cubic-bezier(0.22, 1, 0.36, 1); 
+            transition: height 0.08s linear; 
         }
 
         .side-nav {
@@ -104,22 +106,43 @@
 
         .hero { 
             display: flex; align-items: center; justify-content: space-between; gap: 40px; 
-            padding: 100px 0 30px 0; border-bottom: none;
-            animation: heroFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-            opacity: 0; transform: translateY(20px);
+            padding: 35px 0 22px 0; border-bottom: none;
+            opacity: 1;
         }
-        @keyframes heroFadeIn { to { opacity: 1; transform: translateY(0); } }
 
         .hero-text { flex: 1; }
         .hero-text h1 { font-size: 3.5rem; margin: 0 0 10px 0; }
         .hero-text h1 span { color: var(--accent); }
         .hero-text h2 { font-size: 1.8rem; color: var(--text-muted); font-weight: 400; margin-top: 0; }
-        .hero-text p { font-size: 1.1rem; max-width: 600px; margin-bottom: 25px; }
+        .hero-text p { font-size: 1.1rem; max-width: 600px; margin-bottom: 18px; }
         
-        .contact-list { list-style: none; padding: 0; margin-bottom: 30px; }
+        .contact-list { list-style: none; padding: 0; margin-bottom: 20px; }
         .contact-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
         .contact-list a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
         .contact-list a:hover { color: var(--accent-hover); }
+
+        .contact-actions, .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+        .contact-actions { margin-bottom: 18px; }
+        .contact-icon {
+            width: 44px; height: 44px; border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+            color: var(--text-main); background: rgba(56,189,248,0.12);
+            border: 1px solid rgba(56,189,248,0.32); text-decoration: none;
+            transition: transform 0.3s, background 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .contact-icon:hover { transform: translateY(-3px); background: rgba(56,189,248,0.22); border-color: var(--accent); color: var(--accent-hover); }
+        .contact-icon i { font-size: 1.25rem; }
+        .action-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 11px 16px; border-radius: 8px; text-decoration: none;
+            color: var(--text-main); background: rgba(56,189,248,0.12);
+            border: 1px solid rgba(56,189,248,0.32);
+            transition: transform 0.3s, background 0.3s, border-color 0.3s;
+            cursor: pointer; font: inherit;
+        }
+        .action-btn:hover { transform: translateY(-3px); background: rgba(56,189,248,0.22); border-color: var(--accent); }
+        .action-btn.secondary { background: transparent; border-color: rgba(255,255,255,0.18); color: var(--text-muted); }
+        .action-btn.secondary:hover { color: var(--text-main); border-color: rgba(56,189,248,0.5); }
 
         .hero-image { flex: 1; display: flex; justify-content: flex-end; }
         .hero-image img { 
@@ -129,7 +152,7 @@
         }
         .hero-image img:hover { transform: translateY(-10px); border-color: var(--accent); }
 
-        .scroll-indicator-wrapper { width: 100%; display: flex; justify-content: center; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .scroll-indicator-wrapper { width: 100%; display: flex; justify-content: center; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .scroll-indicator { display: flex; flex-direction: column; align-items: center; opacity: 0.7; animation: bounce 2s infinite; text-decoration: none; color: var(--text-muted); }
         .scroll-indicator span { font-size: 0.8rem; margin-top: 8px; letter-spacing: 1px; }
         .mouse { width: 26px; height: 40px; border: 2px solid var(--text-muted); border-radius: 15px; position: relative; }
@@ -145,6 +168,31 @@
         .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
         .tag { background: rgba(56,189,248,0.1); color: var(--text-main); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(56,189,248,0.2); transition: all 0.3s; }
         .tag:hover { background: rgba(56,189,248,0.2); border-color: var(--accent); }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .project-card {
+            background: linear-gradient(180deg, rgba(30,41,59,0.95), rgba(15,23,42,0.95));
+            border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 24px;
+            min-height: 100%; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s, box-shadow 0.4s;
+        }
+        .project-card:hover { transform: translateY(-8px); border-color: rgba(56,189,248,0.42); box-shadow: 0 18px 36px rgba(0,0,0,0.3); }
+        .project-topline { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+        .project-icon {
+            width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center;
+            color: var(--accent); background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25);
+            overflow: hidden; flex: 0 0 auto;
+        }
+        .project-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .project-type { color: var(--text-muted); font-size: 0.82rem; text-align: right; }
+        .project-card h3 { margin: 0 0 12px; color: var(--text-main); font-size: 1.25rem; }
+        .project-card p { color: var(--text-muted); margin: 0 0 16px; }
+        .project-built {
+            display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px;
+            color: var(--accent); font-size: 0.9rem; font-weight: 600;
+        }
+        .project-focus { list-style: none; padding: 0; margin: 0 0 18px; color: var(--text-muted); }
+        .project-focus li { margin-bottom: 8px; display: flex; gap: 8px; }
+        .project-focus i { color: var(--accent); margin-top: 5px; font-size: 0.75rem; }
 
         .timeline { border-left: 2px solid var(--accent); padding-left: 30px; position: relative; margin-left: 15px; }
         .timeline-item { margin-bottom: 40px; position: relative; }
@@ -166,11 +214,25 @@
         @media (max-width: 900px) {
             .side-nav { display: none; }
             .container { padding: 0 20px; }
-            .hero { flex-direction: column-reverse; text-align: center; padding-top: 60px; padding-bottom: 30px;}
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 40px; padding-bottom: 30px;}
             .hero-image { justify-content: center; width: 100%; }
             .hero-image img { max-width: 280px; }
             .contact-list li { justify-content: center; }
+            .contact-actions, .hero-actions { justify-content: center; }
+            .project-topline { align-items: flex-start; }
             h2.section-title { font-size: 1.8rem; }
+        }
+
+        @media print {
+            .scroll-progress-container, .side-nav, .bg-animation, .scroll-indicator-wrapper, .hero-actions, .contact-actions { display: none !important; }
+            body, html { background: #ffffff; color: #111827; }
+            .container { max-width: 100%; padding: 0; }
+            section { padding: 24px 0; border-bottom: 1px solid #e5e7eb; }
+            .reveal { opacity: 1; transform: none; }
+            .hero { padding-top: 0; }
+            .hero-image img, .skill-box, .project-card, .info-card { box-shadow: none; border-color: #d1d5db; }
+            .tag { color: #111827; border-color: #cbd5e1; background: #f8fafc; }
+            a { color: #0369a1; }
         }
     </style>
 </head>
@@ -183,6 +245,7 @@
     <nav class="side-nav">
         <a href="#home" class="nav-dot active" data-tooltip="Головна"></a>
         <a href="#skills" class="nav-dot" data-tooltip="Навички"></a>
+        <a href="#projects" class="nav-dot" data-tooltip="Проєкти"></a>
         <a href="#practice" class="nav-dot" data-tooltip="QA Практика"></a>
         <a href="#experience" class="nav-dot" data-tooltip="Досвід роботи"></a>
         <a href="#education" class="nav-dot" data-tooltip="Освіта та Мови"></a>
@@ -203,6 +266,20 @@
                     <li><i class="fa-solid fa-envelope"></i> <a href="mailto:kasyanowmax@gmail.com">kasyanowmax@gmail.com</a></li>
                     <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/max-kasjanow-ba493b39b/" target="_blank">LinkedIn Профіль</a></li>
                 </ul>
+                <div class="contact-actions" aria-label="Швидкі контакти">
+                    <a class="contact-icon" href="https://t.me/moslyharmless" target="_blank" rel="noopener" aria-label="Telegram">
+                        <i class="fa-brands fa-telegram"></i>
+                    </a>
+                    <a class="contact-icon" href="mailto:kasyanowmax@gmail.com" aria-label="Email">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <a class="contact-icon" href="https://wa.me/380756151781" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+                <div class="hero-actions">
+                    <a class="action-btn" href="#projects"><i class="fa-solid fa-diagram-project"></i> Проєкти</a>
+                </div>
             </div>
             <div class="hero-image">
                 <img src="grok-image-32b37985-17ae-4992-a457-237c96841b92.jpg" alt="Максим Касьянов">
@@ -250,6 +327,74 @@
                         <span class="tag">Git / GitHub</span>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="projects" class="reveal">
+            <h2 class="section-title">Проєкти</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-topline">
+                        <div class="project-icon"><img src="assets/razom-car-sharing-icon.svg" alt="Razom Car Sharing icon"></div>
+                        <div class="project-type">App Development + QA</div>
+                    </div>
+                    <h3>Razom Car Sharing</h3>
+                    <div class="project-built"><i class="fa-solid fa-code"></i> Розробив застосунок і провів QA-перевірку</div>
+                    <p>Проєкт сервісу каршерингу з фокусом на шлях користувача від реєстрації до бронювання авто.</p>
+                    <ul class="project-focus">
+                        <li><i class="fa-solid fa-check"></i><span>Реалізація основної логіки користувацького сценарію: профіль, пошук авто, фільтри та бронювання.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>QA-перевірка авторизації, позитивних і негативних сценаріїв, граничних значень.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Bug reports із кроками відтворення, фактичним та очікуваним результатом.</span></li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Development</span>
+                        <span class="tag">Functional</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Checklist</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-topline">
+                        <div class="project-icon"><img src="assets/rushvpn-icon.svg" alt="RushVPN icon"></div>
+                        <div class="project-type">Android Development + QA</div>
+                    </div>
+                    <h3>RushVPN</h3>
+                    <div class="project-built"><i class="fa-solid fa-code"></i> Розробив VPN-застосунок і протестував ключові сценарії</div>
+                    <p>VPN-застосунок для Android: стабільність підключення, стани інтерфейсу та поведінка під час збоїв мережі.</p>
+                    <ul class="project-focus">
+                        <li><i class="fa-solid fa-check"></i><span>Реалізація користувацького flow: запуск, вибір сервера, підключення та відключення.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>QA-перевірка повідомлень про помилки, onboarding flow, підписок та повторного з'єднання.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Regression і smoke checks після змін у ключових екранах.</span></li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Development</span>
+                        <span class="tag">Regression</span>
+                        <span class="tag">Smoke</span>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-topline">
+                        <div class="project-icon"><img src="assets/offer-ai-resume-icon.svg" alt="Offer AI Resume icon"></div>
+                        <div class="project-type">AI Product Development + QA</div>
+                    </div>
+                    <h3>Offer AI: Resume</h3>
+                    <div class="project-built"><i class="fa-solid fa-code"></i> Розробив AI-сервіс і перевірив якість генерації</div>
+                    <p>AI-сервіс для створення резюме та пропозицій із перевіркою форм, результатів генерації й валідації даних.</p>
+                    <ul class="project-focus">
+                        <li><i class="fa-solid fa-check"></i><span>Реалізація flow із введенням даних, генерацією тексту та збереженням результату.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Тест-кейси для різних мов, неповних даних, завантаження файлів і нестандартних сценаріїв.</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Аналіз UX: зрозумілість підказок, помилок та фінального резюме.</span></li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Development</span>
+                        <span class="tag">Test Cases</span>
+                        <span class="tag">Validation</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -327,20 +472,10 @@
                 </div>
             </div>
         </section>
+
     </div>
 
     <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight + 100) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-
         function updateProgressBar() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -350,6 +485,7 @@
 
         const sections = document.querySelectorAll("section");
         const navDots = document.querySelectorAll(".nav-dot");
+        const reveals = document.querySelectorAll(".reveal");
         const observerOptions = { root: null, rootMargin: "-20% 0px -70% 0px", threshold: 0 };
 
         const observer = new IntersectionObserver((entries) => {
@@ -365,19 +501,28 @@
 
         sections.forEach(section => observer.observe(section));
 
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: "100px 0px", threshold: 0 });
+
+        reveals.forEach(section => revealObserver.observe(section));
+
         let ticking = false;
         window.addEventListener("scroll", () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    reveal();
                     updateProgressBar();
                     ticking = false;
                 });
                 ticking = true;
             }
-        });
+        }, { passive: true });
         
-        reveal();
         updateProgressBar();
     </script>
 </body>
