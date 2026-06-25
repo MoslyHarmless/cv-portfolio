@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Професійне фарбування та реставрація меблів у Житомирі. Маляр МДФ Катерина Касьянова, 21+ років досвіду, ручна робота, підбір кольору, контроль якості.">
+  <meta name="keywords" content="фарбування меблів, реставрація меблів, маляр МДФ, Житомир, фарбування фасадів, реставрація деревини, handmade меблі">
+  <meta name="author" content="Катерина Касьянова">
+  <meta property="og:title" content="Нове життя для ваших меблів">
+  <meta property="og:description" content="Професійне фарбування та реставрація меблів з любов'ю до деталей, стилю та затишку.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/kateryna-portrait.jpg">
+  <title>Катерина Касьянова | Фарбування та реставрація меблів</title>
+  <style>
+    :root {
+      --milk: #fffaf4;
+      --cream: #f7efe4;
+      --rose: #e9b8b0;
+      --rose-deep: #b66f67;
+      --sage: #a7b3a0;
+      --wood: #8c6752;
+      --charcoal: #2d2926;
+      --muted: #766d66;
+      --line: rgba(81, 65, 55, 0.14);
+      --glass: rgba(255, 250, 244, 0.68);
+      --shadow: 0 24px 70px rgba(78, 58, 45, 0.16);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Inter, system-ui, -apple-system, sans-serif;
+      color: var(--charcoal);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(233,184,176,0.24), transparent 30%),
+        radial-gradient(circle at 82% 12%, rgba(167,179,160,0.22), transparent 32%),
+        linear-gradient(180deg, var(--milk), #f3e9dd 48%, #fffaf4);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(255,250,244,0.78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--rose), var(--sage));
+      color: #fff;
+      box-shadow: 0 10px 26px rgba(182,111,103,0.28);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--rose-deep); }
+
+    .section {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 104px 0;
+    }
+    .section-kicker {
+      margin: 0 0 12px;
+      color: var(--rose-deep);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .section-title {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.8rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      max-width: 840px;
+    }
+    .section-text {
+      margin: 24px 0 0;
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1.08rem;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 72px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(35,29,25,0.78), rgba(35,29,25,0.28) 48%, rgba(255,250,244,0.06)),
+        url("assets/studio-soft-background.jpg") center/cover no-repeat;
+      transform: scale(1.04);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 48vw;
+      height: 48vw;
+      right: -16vw;
+      bottom: -22vw;
+      border: 1px solid rgba(255,255,255,0.36);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,250,244,0.2), transparent 62%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 88px 0 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.74fr);
+      gap: 56px;
+      align-items: end;
+    }
+    .hero-copy { color: #fffaf4; }
+    .hero-title {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(3.2rem, 8vw, 7.8rem);
+      line-height: 0.88;
+      letter-spacing: -0.07em;
+    }
+    .hero-subtitle {
+      max-width: 670px;
+      margin: 28px 0 0;
+      font-size: clamp(1.08rem, 2vw, 1.38rem);
+      color: rgba(255,250,244,0.86);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+    .btn-primary {
+      color: var(--charcoal);
+      background: #fffaf4;
+      box-shadow: 0 16px 38px rgba(0,0,0,0.18);
+    }
+    .btn-secondary {
+      color: #fffaf4;
+      border-color: rgba(255,250,244,0.45);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .hero-card {
+      background: rgba(255,250,244,0.2);
+      border: 1px solid rgba(255,250,244,0.35);
+      border-radius: 34px;
+      padding: 16px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 22px 60px rgba(0,0,0,0.22);
+    }
+    .hero-card img {
+      border-radius: 24px;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 62% 26%;
+    }
+    .hero-note {
+      margin: 14px 4px 2px;
+      color: rgba(255,250,244,0.86);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.95rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 42px;
+      max-width: 680px;
+    }
+    .stat {
+      border-top: 1px solid rgba(255,250,244,0.35);
+      padding-top: 16px;
+    }
+    .stat strong {
+      display: block;
+      color: #fff;
+      font-size: 1.35rem;
+    }
+    .stat span { color: rgba(255,250,244,0.72); font-size: 0.9rem; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+      gap: 54px;
+      align-items: start;
+      margin-top: 44px;
+    }
+    .portrait-frame {
+      position: sticky;
+      top: 100px;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #eaded0;
+    }
+    .portrait-frame img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 58% 25%;
+    }
+    .story {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+    .soft-panel {
+      margin-top: 28px;
+      padding: 28px;
+      border-radius: var(--radius);
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+    }
+    .soft-panel p { margin: 0; color: var(--muted); }
+    .advantages {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .advantage, .service-card, .review-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.52);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 16px 46px rgba(78, 58, 45, 0.08);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+    .advantage:hover, .service-card:hover, .review-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(182,111,103,0.28);
+      box-shadow: 0 22px 58px rgba(78, 58, 45, 0.13);
+    }
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(233,184,176,0.78), rgba(167,179,160,0.55));
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .advantage h3, .service-card h3, .review-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+    .advantage p, .service-card p, .review-card p { margin: 0; color: var(--muted); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(190px, 1fr));
+      gap: 16px;
+      margin-top: 42px;
+    }
+    .service-card { min-height: 260px; display: flex; flex-direction: column; }
+    .service-card p { margin-top: auto; }
+
+    .portfolio-grid {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .work-card {
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #d1b69c, #fff7ef);
+      box-shadow: var(--shadow);
+      transition: transform 0.35s ease;
+    }
+    .work-card:nth-child(2) { min-height: 460px; background: linear-gradient(135deg, #e8c9c4, #f9f1e8); }
+    .work-card:nth-child(3) { background: linear-gradient(135deg, #bac7b3, #fffaf4); }
+    .work-card:nth-child(4) { grid-column: span 2; min-height: 320px; background: linear-gradient(135deg, #e7d8c4, #f6e9dc); }
+    .work-card:hover { transform: translateY(-8px) scale(1.01); }
+    .work-art {
+      position: absolute;
+      inset: 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.62);
+      background:
+        linear-gradient(90deg, rgba(85,65,51,0.26) 0 49%, rgba(255,255,255,0.62) 49% 51%, rgba(255,255,255,0.5) 51%),
+        radial-gradient(circle at 76% 24%, rgba(255,255,255,0.7), transparent 28%);
+    }
+    .work-art::before {
+      content: "";
+      position: absolute;
+      left: 14%;
+      right: 14%;
+      bottom: 18%;
+      height: 42%;
+      border-radius: 18px 18px 8px 8px;
+      background:
+        linear-gradient(90deg, rgba(82,64,51,0.55) 0 49%, rgba(255,250,244,0.92) 49%),
+        repeating-linear-gradient(0deg, transparent 0 24px, rgba(45,41,38,0.12) 24px 27px);
+      box-shadow: 0 24px 46px rgba(45,41,38,0.16);
+    }
+    .work-art::after {
+      content: "";
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      bottom: 13%;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(45,41,38,0.28);
+      filter: blur(9px);
+    }
+    .work-label {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 26px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(45,41,38,0.34);
+      font-weight: 700;
+    }
+
+    .reviews-grid {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .review-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose), var(--sage));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+    .stars { color: #c89147; letter-spacing: 0.06em; }
+
+    .process {
+      margin-top: 46px;
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-number {
+      color: var(--rose-deep);
+      font-weight: 900;
+      font-size: 1.4rem;
+    }
+    .step h3 { margin: 0 0 8px; font-size: 1.28rem; }
+    .step p { margin: 0; color: var(--muted); max-width: 820px; }
+
+    .resume-content {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 20px;
+    }
+    .content-card {
+      border-radius: var(--radius);
+      padding: 28px;
+      background: rgba(255,255,255,0.54);
+      border: 1px solid var(--line);
+    }
+    .content-card h3 { margin: 0 0 16px; }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #fffaf4;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .experience-list {
+      display: grid;
+      gap: 18px;
+    }
+    .experience-item {
+      padding-left: 18px;
+      border-left: 3px solid rgba(182,111,103,0.38);
+    }
+    .experience-item h4 { margin: 0 0 4px; }
+    .experience-item p { margin: 0; color: var(--muted); }
+
+    .contact-section {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto 40px;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(45,41,38,0.9), rgba(98,75,63,0.78)),
+        url("assets/studio-soft-background.jpg") center/cover no-repeat;
+      color: #fffaf4;
+      box-shadow: var(--shadow);
+    }
+    .contact-inner {
+      padding: clamp(32px, 7vw, 78px);
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 42px;
+    }
+    .contact-inner .section-title { color: #fffaf4; }
+    .contact-inner .section-text { color: rgba(255,250,244,0.75); }
+    .contact-list {
+      margin-top: 30px;
+      display: grid;
+      gap: 12px;
+      color: rgba(255,250,244,0.85);
+    }
+    .contact-list a { text-decoration: none; }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .social-link {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      color: #fffaf4;
+      border: 1px solid rgba(255,250,244,0.28);
+      background: rgba(255,255,255,0.1);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .social-link:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.18);
+    }
+    .instagram-block {
+      margin-top: 26px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,250,244,0.18);
+    }
+    .instagram-block h3 {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      color: #fffaf4;
+    }
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      max-width: 420px;
+    }
+    .insta-tile {
+      aspect-ratio: 1;
+      border-radius: 16px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255,250,244,0.68), rgba(233,184,176,0.42)),
+        radial-gradient(circle at 70% 20%, rgba(167,179,160,0.8), transparent 36%);
+      border: 1px solid rgba(255,250,244,0.22);
+      position: relative;
+    }
+    .insta-tile::after {
+      content: "";
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      bottom: 18%;
+      height: 32%;
+      border-radius: 10px;
+      background: rgba(45,41,38,0.22);
+      box-shadow: inset 50px 0 rgba(255,250,244,0.52);
+    }
+    .form {
+      display: grid;
+      gap: 14px;
+    }
+    .field {
+      width: 100%;
+      border: 1px solid rgba(255,250,244,0.24);
+      border-radius: 18px;
+      padding: 14px 16px;
+      color: #fffaf4;
+      background: rgba(255,255,255,0.1);
+      outline: none;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .field::placeholder { color: rgba(255,250,244,0.62); }
+    .field:focus {
+      border-color: rgba(255,250,244,0.68);
+      background: rgba(255,255,255,0.16);
+    }
+    textarea.field { min-height: 140px; resize: vertical; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1020px) {
+      .nav-links { display: none; }
+      .hero-inner,
+      .about-grid,
+      .resume-content,
+      .contact-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero { min-height: auto; }
+      .hero-inner { padding-top: 58px; }
+      .hero-card { max-width: 520px; }
+      .portrait-frame { position: static; max-width: 540px; }
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .work-card:nth-child(4) { grid-column: span 1; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav { width: min(100% - 28px, 1180px); }
+      .section, .contact-section { width: min(100% - 28px, 1180px); }
+      .section { padding: 72px 0; }
+      .hero-inner { width: min(100% - 28px, 1180px); gap: 30px; }
+      .hero-title { font-size: clamp(3rem, 17vw, 4.4rem); }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+      .stats, .advantages, .services-grid, .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      .step { grid-template-columns: 1fr; gap: 8px; }
+      .contact-inner { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Основна навігація">
+      <a class="brand" href="#top" aria-label="На головну">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 16c5-7 10-10 16-10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M15 5l5 1-1 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>Kateryna Craft</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">Про мене</a>
+        <a href="#services">Послуги</a>
+        <a href="#portfolio">Роботи</a>
+        <a href="#process">Процес</a>
+        <a href="#contact">Контакти</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <p class="section-kicker">Фарбування та реставрація меблів</p>
+          <h1 class="hero-title" id="hero-title">Нове життя для ваших меблів</h1>
+          <p class="hero-subtitle">Професійне фарбування та реставрація меблів з любов'ю до деталей, стилю та затишку.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#portfolio">Переглянути роботи</a>
+            <a class="btn btn-secondary" href="#contact">Отримати консультацію</a>
+          </div>
+          <div class="stats" aria-label="Коротко про досвід">
+            <div class="stat"><strong>21+</strong><span>років практики</span></div>
+            <div class="stat"><strong>МДФ</strong><span>фарбування та фініш</span></div>
+            <div class="stat"><strong>QC</strong><span>контроль якості</span></div>
+          </div>
+        </div>
+        <aside class="hero-card reveal" aria-label="Фото майстрині">
+          <img src="assets/kateryna-portrait.jpg" alt="Катерина Касьянова, майстриня з фарбування меблів">
+          <div class="hero-note">
+            <span>Катерина Касьянова</span>
+            <span>Житомир</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <p class="section-kicker reveal">Про майстриню</p>
+      <h2 class="section-title reveal">Професійний підхід до кольору, поверхні та деталей</h2>
+      <div class="about-grid">
+        <div class="portrait-frame reveal">
+          <img src="assets/kateryna-portrait.jpg" alt="Портрет Катерини Касьянової">
+        </div>
+        <div>
+          <p class="story reveal">Я допомагаю перетворювати старі меблі на стильні елементи інтер'єру. Кожен проєкт створюється з увагою до деталей, творчістю та любов'ю до красивих просторів.</p>
+          <div class="soft-panel reveal">
+            <p>З резюме: досвідчена малярка МДФ із понад 21 роком практичної роботи. Спеціалізуюся на якісному фарбуванні, фінішній обробці виробів, дотриманні технологічних карт, контролі товщини покриття та виправленні браку.</p>
+          </div>
+          <div class="advantages">
+            <article class="advantage reveal"><div class="icon">✦</div><h3>Якісна ручна робота</h3><p>Поверхні готуються, шліфуються та фарбуються з повагою до матеріалу.</p></article>
+            <article class="advantage reveal"><div class="icon">◎</div><h3>Екологічні матеріали</h3><p>Підбір покриттів з урахуванням призначення меблів та простору.</p></article>
+            <article class="advantage reveal"><div class="icon">◒</div><h3>Індивідуальний стиль</h3><p>Колір, фактура та фініш підбираються під інтер'єр і характер речі.</p></article>
+            <article class="advantage reveal"><div class="icon">✓</div><h3>Увага до деталей</h3><p>Контроль швів, покриття, відтінку та фінального вигляду перед передачею.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <p class="section-kicker reveal">Мої послуги</p>
+      <h2 class="section-title reveal">Оновлення меблів без втрати характеру</h2>
+      <p class="section-text reveal">Від підбору кольору до фінального покриття: робота будується навколо вашого інтер'єру, матеріалу меблів і бажаного настрою простору.</p>
+      <div class="services-grid">
+        <article class="service-card reveal"><div class="icon">01</div><h3>Фарбування меблів</h3><p>МДФ, фасади, двері та дерев'яні вироби з рівним покриттям і акуратною текстурою.</p></article>
+        <article class="service-card reveal"><div class="icon">02</div><h3>Реставрація меблів</h3><p>Оновлення поверхонь, виправлення дефектів, підготовка до нового декоративного шару.</p></article>
+        <article class="service-card reveal"><div class="icon">03</div><h3>Підбір кольорів</h3><p>Допомога з палітрою, зразками та відтінками, які гармонійно працюють в інтер'єрі.</p></article>
+        <article class="service-card reveal"><div class="icon">04</div><h3>Оновлення стилю</h3><p>Перетворення звичних меблів на виразні елементи сучасного, затишного простору.</p></article>
+        <article class="service-card reveal"><div class="icon">05</div><h3>Консультація по декору</h3><p>Поради щодо фінішу, догляду, поєднання меблів з текстилем, світлом і декором.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <p class="section-kicker reveal">Портфоліо</p>
+      <h2 class="section-title reveal">До та Після</h2>
+      <p class="section-text reveal">Цей блок підготовлений як гнучка галерея для майбутніх фото робіт. Картки витримують різні пропорції зображень, довгі підписи та Pinterest-style розкладку.</p>
+      <div class="portfolio-grid">
+        <article class="work-card reveal"><div class="work-art"></div><div class="work-label"><span>Фасади МДФ</span><span>до / після</span></div></article>
+        <article class="work-card reveal"><div class="work-art"></div><div class="work-label"><span>Комод</span><span>новий фініш</span></div></article>
+        <article class="work-card reveal"><div class="work-art"></div><div class="work-label"><span>Двері</span><span>реставрація</span></div></article>
+        <article class="work-card reveal"><div class="work-art"></div><div class="work-label"><span>Дерев'яні вироби</span><span>колір + захист</span></div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section-kicker reveal">Відгуки</p>
+      <h2 class="section-title reveal">Що кажуть клієнти</h2>
+      <div class="reviews-grid">
+        <article class="review-card reveal"><div class="review-head"><div class="avatar">О</div><div><h3>Олена</h3><div class="stars">★★★★★</div></div></div><p>Меблі виглядають так, ніби їх створили заново. Дуже акуратна робота і прекрасний підбір кольору.</p></article>
+        <article class="review-card reveal"><div class="review-head"><div class="avatar">І</div><div><h3>Ірина</h3><div class="stars">★★★★★</div></div></div><p>Сподобалось, що майстриня пояснила процес, порадила фініш і уважно поставилась до деталей.</p></article>
+        <article class="review-card reveal"><div class="review-head"><div class="avatar">М</div><div><h3>Марина</h3><div class="stars">★★★★★</div></div></div><p>Старий комод став акцентом у кімнаті. Робота виглядає дорого, чисто й дуже стильно.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <p class="section-kicker reveal">Процес</p>
+      <h2 class="section-title reveal">Як проходить робота</h2>
+      <div class="process">
+        <article class="step reveal"><div class="step-number">01</div><div><h3>Консультація</h3><p>Обговорюємо меблі, стан поверхні, бажаний стиль, терміни та очікування від результату.</p></div></article>
+        <article class="step reveal"><div class="step-number">02</div><div><h3>Підбір стилю та кольору</h3><p>Працюємо з палітрою, зразками, фінішем та поєднанням меблів з інтер'єром.</p></div></article>
+        <article class="step reveal"><div class="step-number">03</div><div><h3>Підготовка меблів</h3><p>Очищення, шліфування, ґрунтування та підготовка поверхні до якісного покриття.</p></div></article>
+        <article class="step reveal"><div class="step-number">04</div><div><h3>Фарбування та реставрація</h3><p>Нанесення шарів, контроль товщини покриття, рівності кольору та відсутності дефектів.</p></div></article>
+        <article class="step reveal"><div class="step-number">05</div><div><h3>Завершення та передача</h3><p>Фінальна перевірка, рекомендації з догляду та передача готового виробу клієнту.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="resume-data">
+      <p class="section-kicker reveal">Дані з PDF</p>
+      <h2 class="section-title reveal">Досвід, який працює на якість</h2>
+      <div class="resume-content">
+        <article class="content-card reveal">
+          <h3>Навички</h3>
+          <div class="tag-list">
+            <span class="tag">Покраска МДФ</span><span class="tag">Ґрунтування</span><span class="tag">Шліфування</span><span class="tag">Фінішні покриття</span><span class="tag">Підбір кольору</span><span class="tag">Контроль якості</span><span class="tag">Технологічні карти</span><span class="tag">Керівництво бригадою</span>
+          </div>
+        </article>
+        <article class="content-card reveal">
+          <h3>Досвід роботи</h3>
+          <div class="experience-list">
+            <div class="experience-item"><h4>Маляр МДФ, контроль якості · Ньолов ФОП</h4><p>2001 - 2015 · Фарбування МДФ, контроль швів, товщини покриття, відповідності кольору та якості перед відправкою замовнику.</p></div>
+            <div class="experience-item"><h4>Маляр МДФ, контроль якості · Прогрес Теч</h4><p>2015 - 2020 · Контроль технологічних карт, організація ділянки фарбування, робота з рекламаціями та персоналом.</p></div>
+            <div class="experience-item"><h4>Маляр, технолог · Марченко ФОП</h4><p>2020 - 2026 · Фарбування дерев'яних виробів, дверей та фасадів, розробка режимів фарбування і контроль виробничого процесу.</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-inner">
+        <div>
+          <p class="section-kicker">Контакти</p>
+          <h2 class="section-title">Створімо щось красиве разом</h2>
+          <p class="section-text">Опишіть меблі, які хочете оновити, прикріпіть фото в повідомленні та отримайте першу консультацію щодо стилю, кольору й можливого процесу роботи.</p>
+          <div class="contact-list" aria-label="Контактна інформація">
+            <a href="tel:+380965024931">Телефон: 096 502 49 31</a>
+            <a href="mailto:ruisamagames@gmail.com">Email: ruisamagames@gmail.com</a>
+            <a href="https://t.me/moslyharmless" target="_blank" rel="noopener">Telegram: @moslyharmless</a>
+            <span>Місто: Житомир</span>
+          </div>
+          <div class="social-links" aria-label="Соціальні мережі">
+            <a class="social-link" href="tel:+380965024931" aria-label="Подзвонити">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.5 3 3.7 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.4.6 3.7.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 3.8c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.7.1.4 0 .8-.3 1.1l-2.3 2.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="social-link" href="mailto:ruisamagames@gmail.com" aria-label="Написати email">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="social-link" href="https://t.me/moslyharmless" target="_blank" rel="noopener" aria-label="Telegram">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="m21 4-4.4 16-5.1-4.9-3.2 3.1.6-5.2L3 10.8 21 4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="social-link" href="#portfolio" aria-label="Instagram portfolio">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.8"/><path d="M17 7.2h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+          <div class="instagram-block">
+            <h3>Instagram-style добірка робіт</h3>
+            <div class="insta-grid" aria-hidden="true">
+              <span class="insta-tile"></span>
+              <span class="insta-tile"></span>
+              <span class="insta-tile"></span>
+              <span class="insta-tile"></span>
+            </div>
+          </div>
+        </div>
+        <form class="form" action="mailto:ruisamagames@gmail.com" method="post" enctype="text/plain">
+          <input class="field" type="text" name="name" placeholder="Ім'я" autocomplete="name" required>
+          <input class="field" type="tel" name="phone" placeholder="Телефон" autocomplete="tel">
+          <input class="field" type="email" name="email" placeholder="Email" autocomplete="email">
+          <textarea class="field" name="message" placeholder="Повідомлення"></textarea>
+          <button class="btn btn-primary" type="submit">Надіслати</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

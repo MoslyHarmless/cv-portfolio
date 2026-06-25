@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" role="img" aria-labelledby="title desc">
+  <title id="title">SecureFlow Dev logo</title>
+  <desc id="desc">Developer logo with a shield, flow route, AI spark, and QA check.</desc>
+  <defs>
+    <linearGradient id="shield" x1="70" y1="36" x2="250" y2="226" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="0.5" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="260" rx="36" fill="#111827"/>
+  <path d="M159 36l102 38v74c0 68-41 111-102 138-61-27-102-70-102-138V74l102-38Z" fill="url(#shield)"/>
+  <path d="M90 143c35-55 86-63 137-22" fill="none" stroke="#f8fafc" stroke-width="13" stroke-linecap="round"/>
+  <circle cx="90" cy="143" r="14" fill="#f8fafc"/>
+  <circle cx="227" cy="121" r="14" fill="#f8fafc"/>
+  <path d="M141 146l25 24 51-62" fill="none" stroke="#22c55e" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M119 79h24M175 191h44" stroke="#f8fafc" stroke-width="11" stroke-linecap="round" opacity="0.85"/>
+  <path d="M234 66l8 21 21 8-21 8-8 21-8-21-21-8 21-8 8-21Z" fill="#fbbf24"/>
+  <text x="330" y="118" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="800" fill="#f8fafc">SecureFlow Dev</text>
+  <text x="333" y="162" font-family="Segoe UI, Arial, sans-serif" font-size="23" fill="#94a3b8">Security-minded apps with smooth flows and QA discipline.</text>
+</svg>

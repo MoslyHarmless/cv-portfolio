@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Logo Concepts</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    h1 { margin: 0 0 8px; font-size: 32px; }
+    .intro { margin: 0 0 28px; color: var(--muted); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+    }
+    article {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0b1120;
+    }
+    h2 { margin: 16px 0 8px; font-size: 20px; }
+    p { margin: 0; color: var(--muted); line-height: 1.5; }
+    .text {
+      margin-top: 12px;
+      color: var(--text);
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+    }
+    code { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Developer Logo Concepts</h1>
+    <p class="intro">Five logo directions connected to Razom Car Sharing, RushVPN, and Offer AI: Resume.</p>
+    <div class="grid">
+      <article>
+        <img src="variant-1-flowforge.svg" alt="FlowForge Apps logo">
+        <h2>FlowForge Apps</h2>
+        <p class="text">I build mobility, VPN, and AI tools with clean flows, practical features, and QA-tested reliability.</p>
+      </article>
+      <article>
+        <img src="variant-2-kasyanov-stack.svg" alt="Kasyanov Stack logo">
+        <h2>Kasyanov Stack</h2>
+        <p class="text">From car sharing to VPN and AI resumes, I turn product ideas into tested, user-ready apps.</p>
+      </article>
+      <article>
+        <img src="variant-3-secureflow-dev.svg" alt="SecureFlow Dev logo">
+        <h2>SecureFlow Dev</h2>
+        <p class="text">I create secure, useful apps with smooth user flows, thoughtful logic, and hands-on QA testing.</p>
+      </article>
+      <article>
+        <img src="variant-4-mk-product-lab.svg" alt="MK Product Lab logo">
+        <h2>MK Product Lab</h2>
+        <p class="text">Developer of car sharing, VPN, and AI resume products built with structure, testing, and care.</p>
+      </article>
+      <article>
+        <img src="variant-5-triple-check-apps.svg" alt="TripleCheck Apps logo">
+        <h2>TripleCheck Apps</h2>
+        <p class="text">Apps for mobility, privacy, and AI resumes: designed, developed, and checked before release.</p>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

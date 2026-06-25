@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" role="img" aria-labelledby="title desc">
+  <title id="title">MK Product Lab logo</title>
+  <desc id="desc">Developer monogram with code brackets and three product signals.</desc>
+  <defs>
+    <linearGradient id="mk" x1="65" y1="55" x2="250" y2="205" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="0.46" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="260" rx="36" fill="#0f172a"/>
+  <rect x="57" y="48" width="196" height="164" rx="42" fill="#020617" stroke="url(#mk)" stroke-width="8"/>
+  <text x="155" y="151" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="78" font-weight="900" fill="url(#mk)">MK</text>
+  <path d="M80 99l-24 31 24 31M231 99l24 31-24 31" fill="none" stroke="#94a3b8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="103" cy="201" r="12" fill="#14b8a6"/>
+  <circle cx="155" cy="201" r="12" fill="#2563eb"/>
+  <circle cx="207" cy="201" r="12" fill="#f59e0b"/>
+  <path d="M100 72c23-14 54-19 91-9" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M181 56l20 10-15 17" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="330" y="118" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="800" fill="#f8fafc">MK Product Lab</text>
+  <text x="333" y="162" font-family="Segoe UI, Arial, sans-serif" font-size="23" fill="#94a3b8">Development, QA, and product thinking in one compact stack.</text>
+</svg>

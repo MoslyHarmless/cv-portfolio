@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" role="img" aria-labelledby="title desc">
+  <title id="title">TripleCheck Apps logo</title>
+  <desc id="desc">Developer logo with three checked project modules for car sharing, VPN, and AI resume.</desc>
+  <defs>
+    <linearGradient id="ring" x1="54" y1="48" x2="260" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22c55e"/>
+      <stop offset="0.46" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#db2777"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="260" rx="36" fill="#0b1220"/>
+  <circle cx="157" cy="130" r="96" fill="none" stroke="url(#ring)" stroke-width="12"/>
+  <rect x="85" y="78" width="58" height="58" rx="17" fill="#14b8a6"/>
+  <rect x="171" y="78" width="58" height="58" rx="17" fill="#2563eb"/>
+  <rect x="128" y="151" width="58" height="58" rx="17" fill="#db2777"/>
+  <path d="M100 116h29M96 114c5-13 10-19 15-19h9c5 0 10 6 15 19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M201 93l18 7v13c0 12-7 20-18 25-11-5-18-13-18-25v-13l18-7Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M146 166h23l10 10v21h-33v-31Z" fill="#fff"/>
+  <path d="M169 166v10h10" fill="#e2e8f0"/>
+  <path d="M213 168l18 18 38-44" fill="none" stroke="#22c55e" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="330" y="118" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="800" fill="#f8fafc">TripleCheck Apps</text>
+  <text x="333" y="162" font-family="Segoe UI, Arial, sans-serif" font-size="23" fill="#94a3b8">Every project built, tested, and polished before release.</text>
+</svg>
