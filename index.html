@@ -553,9 +553,8 @@
             filter: blur(30px);
         }
         .hero-image img { 
-            width: 100%; 
-            max-width: 340px; 
-            aspect-ratio: 1/1;
+            width: 340px; 
+            height: 340px; 
             object-fit: cover;
             object-position: center 15%;
             border-radius: 50%; 
@@ -987,7 +986,8 @@
                 width: 100%; 
             }
             .hero-image img { 
-                max-width: 260px; 
+                width: 260px; 
+                height: 260px;
             }
             .contact-list li { 
                 justify-content: center; 
@@ -1016,10 +1016,12 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 40px;
+                gap: 30px;
                 transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
                 z-index: 1000;
                 box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+                overflow-y: auto;
+                padding: 60px 0;
             }
             .nav-menu.active {
                 right: 0;
@@ -1043,10 +1045,12 @@
                 margin-top: 10px;
             }
             .lang-dropdown {
+                bottom: calc(100% + 8px);
+                top: auto;
                 right: auto;
                 left: 50%;
-                transform: perspective(1000px) rotateX(-20deg) translate(-50%, -10px);
-                transform-origin: top center;
+                transform: perspective(1000px) rotateX(20deg) translate(-50%, 10px);
+                transform-origin: bottom center;
             }
             .lang-selector:hover .lang-dropdown {
                 transform: perspective(1000px) rotateX(0deg) translate(-50%, 0px);
