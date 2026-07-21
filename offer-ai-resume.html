@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk" class="lang-uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer AI: Resume — Деталі проєкту</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #070a13;
+            --secondary-bg: rgba(15, 23, 42, 0.45);
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --accent-secondary: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --card-border: rgba(255, 255, 255, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { width: 8px; background: #070a13; }
+        ::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 8px; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        html.lang-uk .lang-en { display: none !important; }
+        html.lang-en .lang-uk { display: none !important; }
+
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(7, 10, 19, 0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.15); padding: 15px 0;
+        }
+        .header-container {
+            max-width: 1100px; margin: 0 auto; padding: 0 30px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .back-btn {
+            color: var(--text-main); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+        }
+        .back-btn:hover { color: var(--accent); }
+        
+        .hero {
+            padding: 150px 30px 80px; max-width: 1100px; margin: 0 auto;
+            display: flex; gap: 50px; align-items: center; flex-wrap: wrap;
+        }
+        .hero-text { flex: 1; min-width: 300px; }
+        .hero-text h1 { font-family: 'Outfit', sans-serif; font-size: 3rem; margin-bottom: 20px; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; }
+        
+        .hero-image { flex: 1; display: flex; justify-content: center; position: relative; }
+        .hero-image img { width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+        .hero-image::before { content: ''; position: absolute; width: 105%; height: 105%; background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%); z-index: -1; filter: blur(30px); }
+
+        .content-section { max-width: 1100px; margin: 0 auto; padding: 50px 30px; }
+        .content-section h2 { font-family: 'Outfit', sans-serif; font-size: 2rem; margin-bottom: 20px; color: var(--text-main); }
+        .content-card { background: var(--secondary-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 30px; margin-bottom: 30px; backdrop-filter: blur(12px); }
+        .content-card p { margin-bottom: 15px; color: #cbd5e1; }
+        .content-card ul { margin-left: 20px; color: #cbd5e1; }
+        .content-card li { margin-bottom: 10px; }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-main);
+            padding: 8px 12px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> <span class="lang-uk">Назад до портфоліо</span><span class="lang-en">Back to Portfolio</span></a>
+            <button class="lang-btn" onclick="toggleLanguage()">
+                <i class="fa-solid fa-globe"></i> <span id="currentLang">UK</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Offer AI: Resume</h1>
+            <p class="lang-uk">AI-сервіс для автоматичного створення професійних резюме та пропозицій із валідацією полів та аналізом форм.</p>
+            <p class="lang-en">An AI service for automatically creating professional resumes and proposals with field validation and form analysis.</p>
+            <div style="display:flex; gap:10px; margin-bottom: 20px;">
+                <span style="background: rgba(59,130,246,0.1); color: #3b82f6; padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(59,130,246,0.3);">AI Product</span>
+                <span style="background: rgba(59,130,246,0.1); color: #3b82f6; padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(59,130,246,0.3);">Web QA</span>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/offer-ai-bg.png" alt="Offer AI Preview">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-card">
+            <h2><span class="lang-uk">Про проєкт</span><span class="lang-en">About Project</span></h2>
+            <p class="lang-uk">Offer AI — це платформа, що допомагає кандидатам створювати привабливі резюме. Завдяки ШІ-моделям, вона розумно заповнює блоки, витягує інформацію з введених даних і пропонує кращі формулювання.</p>
+            <p class="lang-en">Offer AI is a platform that helps candidates create attractive resumes. Thanks to AI models, it smartly fills blocks, extracts information from input data, and suggests better wording.</p>
+            
+            <h3 style="margin-top: 25px; margin-bottom: 10px; color: var(--accent);"><span class="lang-uk">Де використовувався</span><span class="lang-en">Where it was used</span></h3>
+            <p class="lang-uk">Платформа використовувалася рекрутерами та кандидатами для підготовки до співбесід та створення оптимізованих для ATS (Applicant Tracking System) резюме.</p>
+            <p class="lang-en">The platform was used by recruiters and candidates to prepare for interviews and create ATS-optimized (Applicant Tracking System) resumes.</p>
+        </div>
+
+        <div class="content-card">
+            <h2><span class="lang-uk">Користь та результати</span><span class="lang-en">Benefits & Results</span></h2>
+            <ul>
+                <li><strong class="lang-uk">Розумне заповнення:</strong><strong class="lang-en">Smart Filling:</strong> <span class="lang-uk">Інтеграція форм введення даних з ШІ-моделями.</span><span class="lang-en">Integration of data entry forms with AI models.</span></li>
+                <li><strong class="lang-uk">Валідація (QA):</strong><strong class="lang-en">Validation (QA):</strong> <span class="lang-uk">QA-перевірка валідації полів, генерації PDF-файлів та відображення макетів резюме.</span><span class="lang-en">QA verification of field validation, PDF generation, and resume layout display.</span></li>
+                <li><strong class="lang-uk">Експорт:</strong><strong class="lang-en">Export:</strong> <span class="lang-uk">Тестування експорту даних у різних форматах (PDF, DOCX) та перевірка коректності кодування тексту.</span><span class="lang-en">Testing data export in various formats (PDF, DOCX) and checking text encoding correctness.</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const btnText = document.getElementById('currentLang');
+            if (html.classList.contains('lang-uk')) {
+                html.classList.remove('lang-uk'); html.classList.add('lang-en'); btnText.textContent = 'EN';
+            } else {
+                html.classList.remove('lang-en'); html.classList.add('lang-uk'); btnText.textContent = 'UK';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk" class="lang-uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RushVPN — Деталі проєкту</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #070a13;
+            --secondary-bg: rgba(15, 23, 42, 0.45);
+            --accent: #f43f5e;
+            --accent-hover: #fb7185;
+            --accent-secondary: #c084fc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient-accent: linear-gradient(135deg, #f43f5e 0%, #c084fc 100%);
+            --card-border: rgba(255, 255, 255, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        ::-webkit-scrollbar { width: 8px; background: #070a13; }
+        ::-webkit-scrollbar-thumb { background: rgba(244, 63, 94, 0.3); border-radius: 8px; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        html.lang-uk .lang-en { display: none !important; }
+        html.lang-en .lang-uk { display: none !important; }
+
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(7, 10, 19, 0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(244, 63, 94, 0.15); padding: 15px 0;
+        }
+        .header-container {
+            max-width: 1100px; margin: 0 auto; padding: 0 30px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .back-btn {
+            color: var(--text-main); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+        }
+        .back-btn:hover { color: var(--accent); }
+        
+        .hero {
+            padding: 150px 30px 80px; max-width: 1100px; margin: 0 auto;
+            display: flex; gap: 50px; align-items: center; flex-wrap: wrap;
+        }
+        .hero-text { flex: 1; min-width: 300px; }
+        .hero-text h1 { font-family: 'Outfit', sans-serif; font-size: 3rem; margin-bottom: 20px; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; }
+        
+        .hero-image { flex: 1; display: flex; justify-content: center; position: relative; }
+        .hero-image img { width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+        .hero-image::before { content: ''; position: absolute; width: 105%; height: 105%; background: radial-gradient(circle, rgba(244, 63, 94, 0.2) 0%, transparent 70%); z-index: -1; filter: blur(30px); }
+
+        .content-section { max-width: 1100px; margin: 0 auto; padding: 50px 30px; }
+        .content-section h2 { font-family: 'Outfit', sans-serif; font-size: 2rem; margin-bottom: 20px; color: var(--text-main); }
+        .content-card { background: var(--secondary-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 30px; margin-bottom: 30px; backdrop-filter: blur(12px); }
+        .content-card p { margin-bottom: 15px; color: #cbd5e1; }
+        .content-card ul { margin-left: 20px; color: #cbd5e1; }
+        .content-card li { margin-bottom: 10px; }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-main);
+            padding: 8px 12px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> <span class="lang-uk">Назад до портфоліо</span><span class="lang-en">Back to Portfolio</span></a>
+            <button class="lang-btn" onclick="toggleLanguage()">
+                <i class="fa-solid fa-globe"></i> <span id="currentLang">UK</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>RushVPN</h1>
+            <p class="lang-uk">Мобільний VPN-клієнт для Android, що фокусується на швидкості, безпеці та оптимізації підключень.</p>
+            <p class="lang-en">A mobile VPN client for Android focusing on speed, security, and connection optimization.</p>
+            <div style="display:flex; gap:10px; margin-bottom: 20px;">
+                <span style="background: rgba(244,63,94,0.1); color: #f43f5e; padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(244,63,94,0.3);">Android</span>
+                <span style="background: rgba(244,63,94,0.1); color: #f43f5e; padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(244,63,94,0.3);">WireGuard</span>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/rushvpn-bg.png" alt="RushVPN Preview">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-card">
+            <h2><span class="lang-uk">Про проєкт</span><span class="lang-en">About Project</span></h2>
+            <p class="lang-uk">RushVPN використовує протокол WireGuard для створення швидких та безпечних тунелів. Основна мета — зробити підключення максимально швидким та стійким до зміни мереж.</p>
+            <p class="lang-en">RushVPN uses the WireGuard protocol to create fast and secure tunnels. The main goal is to make the connection as fast as possible and resilient to network changes.</p>
+            
+            <h3 style="margin-top: 25px; margin-bottom: 10px; color: var(--accent);"><span class="lang-uk">Де використовувався</span><span class="lang-en">Where it was used</span></h3>
+            <p class="lang-uk">Проєкт спрямований на глобальний ринок мобільних користувачів, яким потрібен надійний та швидкий доступ до заблокованого або захищеного контенту.</p>
+            <p class="lang-en">The project targets the global market of mobile users who need reliable and fast access to blocked or secured content.</p>
+        </div>
+
+        <div class="content-card">
+            <h2><span class="lang-uk">Користь та результати</span><span class="lang-en">Benefits & Results</span></h2>
+            <ul>
+                <li><strong class="lang-uk">Висока швидкість:</strong><strong class="lang-en">High Speed:</strong> <span class="lang-uk">Оптимізація швидкості та станів тунелю WireGuard.</span><span class="lang-en">Optimization of speed and WireGuard tunnel states.</span></li>
+                <li><strong class="lang-uk">Стабільність:</strong><strong class="lang-en">Stability:</strong> <span class="lang-uk">Тестування стабільності під час зміни мереж (Wi-Fi / Mobile Data) та автопідключення.</span><span class="lang-en">Testing stability when switching networks (Wi-Fi / Mobile Data) and auto-reconnect.</span></li>
+                <li><strong class="lang-uk">Продуманий UX:</strong><strong class="lang-en">Thoughtful UX:</strong> <span class="lang-uk">Ідеальний користувацький flow: від onboarding до вибору серверів.</span><span class="lang-en">Perfect user flow: from onboarding to server selection.</span></li>
+                <li><strong class="lang-uk">Монетизація:</strong><strong class="lang-en">Monetization:</strong> <span class="lang-uk">QA-перевірка логіки преміум-підписок.</span><span class="lang-en">QA verification of premium subscription logic.</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const btnText = document.getElementById('currentLang');
+            if (html.classList.contains('lang-uk')) {
+                html.classList.remove('lang-uk'); html.classList.add('lang-en'); btnText.textContent = 'EN';
+            } else {
+                html.classList.remove('lang-en'); html.classList.add('lang-uk'); btnText.textContent = 'UK';
+            }
+        }
+    </script>
+</body>
+</html>
