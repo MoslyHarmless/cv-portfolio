@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moslyharmless.github.io/cv-portfolio/sitemap.xml
