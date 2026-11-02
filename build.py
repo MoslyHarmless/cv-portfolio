@@ -133,7 +133,6 @@ def header(lang):
 def hero(lang):
     t = TEXT[lang]
     r = "../" if lang == "uk" else "./"
-    other = "uk" if lang == "en" else "en"
     rows = "".join(f"<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>" for k, v in t["status"][:-1])
     k, v = t["status"][-1]
     rows += f'<div><dt>{e(k)}</dt><dd><span class="dot" aria-hidden="true"></span>{e(v)}</dd></div>'
@@ -146,7 +145,6 @@ def hero(lang):
     <div class="actions">
       <a class="btn btn-primary" href="{r}cv/{CV_FILES[lang]}" download>{icon("down")}{e(t["cta_cv"])} <span class="btn-meta">PDF</span></a>
       <a class="btn" href="{CONTACTS["telegram_url"]}" target="_blank" rel="noopener">{e(t["cta_tg"])}</a>
-      <a class="text-link" href="{r}cv/{CV_FILES[other]}" download hreflang="{other}">{e(t["cta_cv_alt"])}</a>
     </div>
   </div>
   <aside class="profile" aria-label="{e(t["status_label"])}">

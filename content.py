@@ -312,7 +312,6 @@ TEXT = {
         "role": "Manual QA Engineer · Web, Mobile & API",
         "lead": "I test web, mobile and API products, and I build them too. Shipping eight apps of my own, two of them on Google Play, taught me where software breaks and how to report it so it gets fixed fast.",
         "cta_cv": "Download CV",
-        "cta_cv_alt": "UA version",
         "cta_tg": "Message me on Telegram",
         "status_label": "Profile",
         "status": [
@@ -392,7 +391,6 @@ TEXT = {
         "role": "Manual QA Engineer · Web, Mobile та API",
         "lead": "Я тестую веб, мобільні застосунки та API, а ще створюю їх сам. Вісім власних продуктів, два з них у Google Play, навчили мене бачити, де програма ламається, і описувати баг так, щоб його швидко виправили.",
         "cta_cv": "Завантажити резюме",
-        "cta_cv_alt": "EN версія",
         "cta_tg": "Написати в Telegram",
         "status_label": "Профіль",
         "status": [
