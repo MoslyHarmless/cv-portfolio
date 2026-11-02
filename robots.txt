@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /cv/print/
 
 Sitemap: https://moslyharmless.github.io/cv-portfolio/sitemap.xml

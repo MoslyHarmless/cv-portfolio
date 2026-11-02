@@ -1,49 +1,42 @@
 # CLAUDE.md — cv-portfolio
 
-Сайт-портфолио и резюме: Maksym Kasianov, Manual QA Engineer и разработчик приложений. Публикуется на GitHub Pages: `https://moslyharmless.github.io/cv-portfolio/` (репозиторий `MoslyHarmless/cv-portfolio`, ветка `main`).
+Сайт-портфолио и резюме: Maksym Kasianov, Manual QA Engineer и разработчик приложений. Публикуется на GitHub Pages: `https://moslyharmless.github.io/cv-portfolio/` (репозиторий `MoslyHarmless/cv-portfolio`, ветка `main`). Две версии: английская `/` и украинская `/uk/`.
 
 С владельцем общаться по-русски.
 
-## Важно: здесь лежит собранный сайт, а не исходники
+## Как устроено
 
-`index.html` подключает файлы с хешами в именах (`assets/index-DgNdEhsC.js`, `assets/index-BsM75ylq.css`, `assets/hero3d-*.js`, `assets/three-*.js`). Это результат сборки Vite с Three.js. Исходников (`src/`, `package.json`) в репозитории нет.
+Статический сайт без фреймворков и сборщиков. Весь текст сайта и резюме лежит в `content.py`, а `build.py` генерирует из него HTML, Markdown, PDF, sitemap.
 
-Следствия:
-- JS и CSS в `assets/` минифицированы — править их руками нельзя.
-- Изменить вёрстку, тексты секций или 3D-сцену можно только в исходном проекте с последующей пересборкой. Если владелец просит такую правку, сначала спроси, где исходники.
-- Руками можно править то, что лежит вне бандла: мета-теги и JSON-LD в `index.html`, `robots.txt`, `sitemap.xml`, файлы резюме, `og.svg`/`og.png`, `favicon.svg`.
-
-## Где что лежит
+**Сгенерированные файлы руками не править** — правка в `content.py` (тексты) или `build.py` (разметка), затем пересборка.
 
 | Путь | Что это |
 |---|---|
-| `index.html` | Оболочка страницы: SEO-мета, Open Graph, подключение бандла |
-| `assets/` | Собранные JS и CSS (не править) |
-| `cv/CV_Maksym_Kasianov_QA_EN.pdf`, `cv/CV_Maksym_Kasianov_QA_UA.pdf` | Резюме для скачивания с сайта |
-| `CV_Maksym_Kasianov_QA_EN.md`, `CV_Maksym_Kasianov_QA_UK.md` | Текстовые исходники резюме |
-| `og.svg`, `og.png`, `favicon.svg` | Картинка для соцсетей и иконка |
-| `robots.txt`, `sitemap.xml`, `.nojekyll` | Служебные файлы GitHub Pages |
-| `14.08.2026 Project Review.md` | Старый обзор; часть замечаний уже неактуальна (OG-теги добавлены) |
+| `content.py` | Все тексты EN/UK: проекты, опыт, навыки, контакты, SEO-заголовки |
+| `build.py` | Генератор страниц, резюме, sitemap, robots |
+| `assets/site.css`, `assets/site.js` | Стили и скрипт (правятся руками) |
+| `index.html`, `uk/index.html` | Сгенерировано |
+| `cv/*.pdf` | Резюме для скачивания; сгенерировано из `cv/print/*.html` |
+| `CV_Maksym_Kasianov_QA_EN.md`, `..._UK.md` | Текстовые версии резюме, сгенерировано |
+| `og.html` → `og.png` | Картинка для соцсетей 1200×630 |
+| `favicon.svg`, `robots.txt`, `sitemap.xml`, `.nojekyll` | Служебные файлы |
 
 ## Команды
 
 ```bash
-python -m http.server 8080    # http://localhost:8080
+python build.py          # HTML, Markdown, sitemap
+python build.py --pdf    # плюс PDF резюме и og.png (нужны playwright и Microsoft Edge)
+python -m http.server 8080
 ```
 
-Выкладка — push в `main`. Сайт живёт в подпапке `/cv-portfolio/`, поэтому пути к ресурсам должны оставаться относительными.
+Выкладка — push в `main`. Сайт живёт в подпапке `/cv-portfolio/`, пути к ресурсам относительные.
 
 ## Правила
 
-- Факты резюме (опыт, даты, навыки, контакты) не выдумывать и не «улучшать» без владельца.
-- Правка резюме: менять `.md` в обеих языковых версиях и напомнить владельцу, что PDF в `cv/` нужно пересобрать — сам он не обновится.
-- После смены `og.svg` пересоздать `og.png` (1200×630).
+- Факты резюме (компании, даты, контакты) не выдумывать без владельца. Формулировки проектов владелец разрешил усиливать: все проекты он сделал сам.
+- Тексты EN и UK меняются вместе, в обоих ключах `content.py`.
+- Резюме должно оставаться ATS-дружелюбным: одна колонка, Arial, стандартные заголовки, без эмодзи и таблиц, не больше двух страниц (проверять число страниц PDF после правок).
 
-## Скилы
+## Скилы и агенты
 
-Проектных скилов нет: в репозитории нечего собирать и тестировать.
-
-Установленные, которые здесь уместны:
-- `searchfit-seo:seo-check`, `searchfit-seo:schema-markup` — мета-теги и JSON-LD (Person) в `index.html`.
-- `anthropic-skills:pdf` — пересборка PDF резюме из `.md`.
-- `design:design-critique`, `design:accessibility-review` — оценка страницы по скриншоту.
+Подключены из ECC (`.claude/skills`, `.claude/agents`): `seo`, `frontend-design-direction`, `i18n-sync`, `accessibility`, `browser-qa`, `make-interfaces-feel-better`; агенты `seo-specialist`, `a11y-architect`.
