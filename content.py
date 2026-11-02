@@ -259,6 +259,22 @@ JOBS = [
     },
 ]
 
+EDUCATION = [
+    {
+        "en": {"title": "Management of Foreign Economic Activity", "org": "Donetsk State University of Management",
+               "period": "2009 – 2014", "points": []},
+        "uk": {"title": "Менеджмент зовнішньоекономічної діяльності", "org": "Донецький державний університет управління",
+               "period": "2009 – 2014", "points": []},
+    },
+    {
+        # Course providers are not named on purpose: list only ones actually completed.
+        "en": {"title": "Manual QA courses", "org": "Online training", "period": "Courses",
+               "points": ["Test design, test documentation, bug tracking in Jira, API testing in Postman, SQL basics."]},
+        "uk": {"title": "Курси Manual QA", "org": "Онлайн-навчання", "period": "Курси",
+               "points": ["Тест-дизайн, тестова документація, баг-трекінг у Jira, тестування API в Postman, основи SQL."]},
+    },
+]
+
 SKILLS = {
     "en": [
         ("Testing", "Manual testing of web, mobile and API; functional, smoke, sanity, regression, exploratory, UI/UX, cross-browser, compatibility and localization testing"),
@@ -268,6 +284,7 @@ SKILLS = {
         ("API & data", "REST API, HTTP / HTTPS, JSON, status codes, SQL (SELECT, JOIN, GROUP BY), PostgreSQL"),
         ("Process", "SDLC, STLC, Agile / Scrum, bug life cycle, severity and priority"),
         ("Development", "Python, Dart / Flutter, JavaScript / TypeScript, Next.js, FastAPI, HTML / CSS"),
+        ("Languages", "English — B2 (Upper-Intermediate), Ukrainian — native"),
     ],
     "uk": [
         ("Тестування", "Ручне тестування вебу, мобільних застосунків і API; функціональне, smoke, sanity, регресійне, дослідницьке, UI/UX, кросбраузерне, тестування сумісності та локалізації"),
@@ -277,6 +294,7 @@ SKILLS = {
         ("API і дані", "REST API, HTTP / HTTPS, JSON, коди відповіді, SQL (SELECT, JOIN, GROUP BY), PostgreSQL"),
         ("Процеси", "SDLC, STLC, Agile / Scrum, життєвий цикл дефекту, severity і priority"),
         ("Розробка", "Python, Dart / Flutter, JavaScript / TypeScript, Next.js, FastAPI, HTML / CSS"),
+        ("Мови", "Англійська — B2 (Upper-Intermediate), українська — рідна"),
     ],
 }
 
@@ -303,6 +321,7 @@ TEXT = {
             ("Focus", "Mobile · Web · API"),
             ("Location", "Zhytomyr, Ukraine · UTC+2"),
             ("Format", "Remote, hybrid or office"),
+            ("English", "B2 · Upper-Intermediate"),
             ("Status", "Open to work"),
         ],
         "facts": [
@@ -356,6 +375,7 @@ TEXT = {
         "cv_skills_h": "Skills",
         "cv_exp_h": "Experience",
         "cv_projects_h": "Projects",
+        "edu_title": "Education",
         "cv_footer": "Available for a test assignment and an interview.",
         "cv_portfolio": "Portfolio",
     },
@@ -381,6 +401,7 @@ TEXT = {
             ("Фокус", "Mobile · Web · API"),
             ("Локація", "Житомир, Україна · UTC+2"),
             ("Формат", "Віддалено, гібрид або офіс"),
+            ("Англійська", "B2 · Upper-Intermediate"),
             ("Статус", "Відкритий до пропозицій"),
         ],
         "facts": [
@@ -433,6 +454,7 @@ TEXT = {
         "cv_skills_h": "Навички",
         "cv_exp_h": "Досвід роботи",
         "cv_projects_h": "Проєкти",
+        "edu_title": "Освіта",
         "cv_footer": "Готовий до тестового завдання та співбесіди.",
         "cv_portfolio": "Портфоліо",
     },

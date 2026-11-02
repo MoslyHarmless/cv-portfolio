@@ -14,6 +14,7 @@ Junior Manual QA Engineer who tests web, mobile and API products and has built e
 - **API & data:** REST API, HTTP / HTTPS, JSON, status codes, SQL (SELECT, JOIN, GROUP BY), PostgreSQL
 - **Process:** SDLC, STLC, Agile / Scrum, bug life cycle, severity and priority
 - **Development:** Python, Dart / Flutter, JavaScript / TypeScript, Next.js, FastAPI, HTML / CSS
+- **Languages:** English — B2 (Upper-Intermediate), Ukrainian — native
 
 ## Experience
 
@@ -96,5 +97,14 @@ Bots for video downloads, temporary email and booking automation, used by real p
 - Commands and inline keyboards, including invalid input
 - IMAP/SMTP delivery: latency, attachments, verification codes
 - Payments with Telegram Stars and premium limits
+
+## Education
+
+### Management of Foreign Economic Activity — Donetsk State University of Management
+*2009 – 2014*
+
+### Manual QA courses — Online training
+*Courses*
+- Test design, test documentation, bug tracking in Jira, API testing in Postman, SQL basics.
 
 **Available for a test assignment and an interview.**

@@ -9,7 +9,7 @@ import sys
 from html import escape
 from pathlib import Path
 
-from content import BASE_URL, CONTACTS, CV_FILES, JOBS, LINK_LABELS, PROJECTS, SKILLS, TEXT
+from content import BASE_URL, CONTACTS, CV_FILES, EDUCATION, JOBS, LINK_LABELS, PROJECTS, SKILLS, TEXT
 
 ROOT = Path(__file__).parent
 LANGS = ("en", "uk")
@@ -50,6 +50,7 @@ def json_ld(lang):
         "knowsAbout": ["Manual testing", "Mobile testing", "Web testing", "API testing", "Regression testing",
                        "Test design", "Jira", "TestRail", "Postman", "Chrome DevTools", "SQL", "Python", "Flutter"],
         "knowsLanguage": ["uk", "en"],
+        "alumniOf": {"@type": "CollegeOrUniversity", "name": EDUCATION[0]["en"]["org"]},
         "sameAs": [CONTACTS["github_url"], CONTACTS["linkedin_url"], CONTACTS["telegram_url"]],
     }
     page = {
@@ -228,18 +229,25 @@ def all_jobs(lang):
     return [TEXT[lang]["exp_current"]] + [j[lang] for j in JOBS]
 
 
-def experience(lang):
-    t = TEXT[lang]
+def timeline(entries):
     rows = []
-    for j in all_jobs(lang):
+    for j in entries:
         pts = "".join(f"<li>{e(x)}</li>" for x in j["points"])
+        pts = f"<ul>{pts}</ul>" if pts else ""
         rows.append(f"""<li class="job reveal">
   <p class="job-period">{e(j["period"])}</p>
-  <div><h3>{e(j["title"])}</h3><p class="job-org">{e(j["org"])}</p><ul>{pts}</ul></div>
+  <div><h3>{e(j["title"])}</h3><p class="job-org">{e(j["org"])}</p>{pts}</div>
 </li>""")
+    return "".join(rows)
+
+
+def experience(lang):
+    t = TEXT[lang]
     return f"""<section class="section wrap" id="experience" aria-labelledby="experience-title">
   {section_head("03", "experience", t["exp_title"])}
-  <ol class="jobs">{"".join(rows)}</ol>
+  <ol class="jobs">{timeline(all_jobs(lang))}</ol>
+  <h3 class="sub-head reveal">{e(t["edu_title"])}</h3>
+  <ol class="jobs">{timeline([x[lang] for x in EDUCATION])}</ol>
 </section>"""
 
 
@@ -309,6 +317,11 @@ def cv_html(lang):
     for j in all_jobs(lang):
         pts = "".join(f"<li>{e(x)}</li>" for x in j["points"])
         jobs += f'<div class="item"><h3>{e(j["title"])} — {e(j["org"])}</h3><p class="meta">{e(j["period"])}</p><ul>{pts}</ul></div>'
+    edu = ""
+    for x in EDUCATION:
+        d = x[lang]
+        pts = "".join(f"<li>{e(p)}</li>" for p in d["points"])
+        edu += f'<div class="item"><h3>{e(d["title"])} — {e(d["org"])}</h3><p class="meta">{e(d["period"])}</p>{f"<ul>{pts}</ul>" if pts else ""}</div>'
     projs = ""
     for p in PROJECTS:
         c = p[lang]
@@ -320,18 +333,18 @@ def cv_html(lang):
 <html lang="{lang}"><head><meta charset="utf-8"><meta name="robots" content="noindex">
 <title>{e(t["name"])} — CV</title>
 <style>
-@page {{ size: A4; margin: 12mm 14mm; }}
-body {{ font-family: Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 1.38; color: #111; margin: 0; }}
+@page {{ size: A4; margin: 10mm 14mm; }}
+body {{ font-family: Arial, Helvetica, sans-serif; font-size: 9.6pt; line-height: 1.33; color: #111; margin: 0; }}
 h1 {{ font-size: 20pt; margin: 0; }}
 .title {{ font-size: 11.5pt; font-weight: bold; margin: 2pt 0 4pt; }}
 .contact {{ font-size: 9pt; margin: 0 0 6pt; }}
-h2 {{ font-size: 11pt; text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid #111; padding-bottom: 2pt; margin: 10pt 0 5pt; }}
+h2 {{ font-size: 11pt; text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid #111; padding-bottom: 2pt; margin: 9pt 0 4pt; }}
 h3 {{ font-size: 10.5pt; margin: 0; }}
 .meta {{ font-size: 9pt; color: #333; margin: 1pt 0 2pt; }}
 p {{ margin: 0 0 3pt; }}
 ul {{ margin: 0; padding-left: 14pt; }}
 li {{ margin: 0 0 1.5pt; }}
-.item {{ margin-bottom: 6pt; break-inside: avoid; }}
+.item {{ margin-bottom: 5pt; break-inside: avoid; }}
 .skills li {{ margin-bottom: 2pt; }}
 </style></head>
 <body>
@@ -346,7 +359,8 @@ li {{ margin: 0 0 1.5pt; }}
 {jobs}
 <h2>{e(t["cv_projects_h"])}</h2>
 {projs}
-<p><b>{e(t["cv_footer"])}</b></p>
+<h2>{e(t["edu_title"])}</h2>
+{edu}
 </body></html>
 """
 
@@ -365,6 +379,10 @@ def cv_md(lang):
         urls = ", ".join(u for _, u in p["links"])
         out += ["", f"### {c.get('name', p['name'])}", f"*{c['kind']} | {', '.join(p['stack'])}*" + (f" | {urls}" if urls else ""),
                 c["summary"]] + [f"- {x}" for x in c["checks"]]
+    out += ["", f"## {t['edu_title']}"]
+    for x in EDUCATION:
+        d = x[lang]
+        out += ["", f"### {d['title']} — {d['org']}", f"*{d['period']}*"] + [f"- {p}" for p in d["points"]]
     out += ["", f"**{t['cv_footer']}**", ""]
     return "\n".join(out)
 
