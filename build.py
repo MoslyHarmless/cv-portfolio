@@ -145,7 +145,7 @@ def hero(lang):
     <p class="lead">{e(t["lead"])}</p>
     <div class="actions">
       <a class="btn btn-primary" href="{r}cv/{CV_FILES[lang]}" download>{icon("down")}{e(t["cta_cv"])} <span class="btn-meta">PDF</span></a>
-      <a class="btn" href="mailto:{CONTACTS["email"]}">{e(t["cta_mail"])}</a>
+      <a class="btn" href="{CONTACTS["telegram_url"]}" target="_blank" rel="noopener">{e(t["cta_tg"])}</a>
       <a class="text-link" href="{r}cv/{CV_FILES[other]}" download hreflang="{other}">{e(t["cta_cv_alt"])}</a>
     </div>
   </div>

@@ -267,10 +267,9 @@ EDUCATION = [
                "period": "2009 – 2014", "points": []},
     },
     {
-        # Course providers are not named on purpose: list only ones actually completed.
-        "en": {"title": "Manual QA courses", "org": "Online training", "period": "Courses",
+        "en": {"title": "Manual QA courses", "org": "ITVDN, Popeliuha QA and other authors", "period": "Courses",
                "points": ["Test design, test documentation, bug tracking in Jira, API testing in Postman, SQL basics."]},
-        "uk": {"title": "Курси Manual QA", "org": "Онлайн-навчання", "period": "Курси",
+        "uk": {"title": "Курси Manual QA", "org": "ITVDN, Popeliuha QA та інші автори", "period": "Курси",
                "points": ["Тест-дизайн, тестова документація, баг-трекінг у Jira, тестування API в Postman, основи SQL."]},
     },
 ]
@@ -314,7 +313,7 @@ TEXT = {
         "lead": "I test web, mobile and API products, and I build them too. Shipping eight apps of my own, two of them on Google Play, taught me where software breaks and how to report it so it gets fixed fast.",
         "cta_cv": "Download CV",
         "cta_cv_alt": "UA version",
-        "cta_mail": "Email me",
+        "cta_tg": "Message me on Telegram",
         "status_label": "Profile",
         "status": [
             ("Role", "Junior Manual QA Engineer"),
@@ -394,7 +393,7 @@ TEXT = {
         "lead": "Я тестую веб, мобільні застосунки та API, а ще створюю їх сам. Вісім власних продуктів, два з них у Google Play, навчили мене бачити, де програма ламається, і описувати баг так, щоб його швидко виправили.",
         "cta_cv": "Завантажити резюме",
         "cta_cv_alt": "EN версія",
-        "cta_mail": "Написати мені",
+        "cta_tg": "Написати в Telegram",
         "status_label": "Профіль",
         "status": [
             ("Роль", "Junior Manual QA Engineer"),

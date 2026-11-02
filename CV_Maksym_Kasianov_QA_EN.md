@@ -103,7 +103,7 @@ Bots for video downloads, temporary email and booking automation, used by real p
 ### Management of Foreign Economic Activity — Donetsk State University of Management
 *2009 – 2014*
 
-### Manual QA courses — Online training
+### Manual QA courses — ITVDN, Popeliuha QA and other authors
 *Courses*
 - Test design, test documentation, bug tracking in Jira, API testing in Postman, SQL basics.
 
