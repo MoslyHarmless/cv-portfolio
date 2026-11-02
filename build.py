@@ -309,7 +309,12 @@ def cv_contact_line(lang):
 
 def cv_html(lang):
     t = TEXT[lang]
-    contact = " | ".join(e(x) for x in cv_contact_line(lang))
+    c = CONTACTS
+    hrefs = {c["phone"]: c["phone_href"], c["email"]: "mailto:" + c["email"], c["linkedin"]: c["linkedin_url"],
+             "t.me/moslyharmless": c["telegram_url"], c["github"]: c["github_url"]}
+    # Plain visible text keeps ATS parsing simple; links make the PDF clickable for recruiters.
+    contact = " | ".join(f'<a href="{e(hrefs[x])}">{e(x)}</a>' if x in hrefs else e(x) for x in cv_contact_line(lang))
+    contact = contact.replace(e(c["portfolio"]), f'<a href="{BASE_URL}">{e(c["portfolio"])}</a>')
     skills_rows = "".join(f"<li><b>{e(k)}:</b> {e(v)}</li>" for k, v in SKILLS[lang])
     jobs = ""
     for j in all_jobs(lang):
@@ -342,6 +347,7 @@ h3 {{ font-size: 10.5pt; margin: 0; }}
 p {{ margin: 0 0 3pt; }}
 ul {{ margin: 0; padding-left: 14pt; }}
 li {{ margin: 0 0 1.5pt; }}
+a {{ color: inherit; text-decoration: none; }}
 .item {{ margin-bottom: 5pt; break-inside: avoid; }}
 .skills li {{ margin-bottom: 2pt; }}
 </style></head>
