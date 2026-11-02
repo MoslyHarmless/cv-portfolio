@@ -4,13 +4,14 @@
 Zhytomyr, Ukraine | +380 75 615 17 81 | kasyanowmax@gmail.com | linkedin.com/in/maksym-kasianov | t.me/moslyharmless | github.com/MoslyHarmless | Portfolio: moslyharmless.github.io/cv-portfolio
 
 ## Summary
-Junior Manual QA Engineer who tests web, mobile and API products and has built eight of them from scratch, two released on Google Play. Writes test plans, test cases, checklists and clear bug reports in Jira; applies test design techniques, SDLC and STLC. Six years of hardware and software fault diagnostics give a habit of finding root causes, and a background in Python, Flutter and Next.js makes it easy to talk to developers.
+Junior Manual QA Engineer who tests web, mobile (Android, iOS) and API products and has built eight of them from scratch, two released on Google Play. Writes test plans, test cases, checklists and clear bug reports in Jira; applies test design techniques, SDLC and STLC; automates UI smoke and regression checks with Selenium and Playwright in CI. Six years of hardware and software fault diagnostics give a habit of finding root causes, and a background in Python, Flutter and Next.js makes it easy to talk to developers.
 
 ## Skills
-- **Testing:** Manual testing of web, mobile and API; functional, smoke, sanity, regression, exploratory, UI/UX, cross-browser, compatibility and localization testing
+- **Testing:** Manual testing of web, mobile (Android, iOS) and API; functional, smoke, sanity, regression, exploratory, UI/UX, cross-browser, compatibility and localization testing
 - **Test design:** Equivalence partitioning, boundary value analysis, decision tables, state transition, error guessing
 - **Documentation:** Test plans, test cases, checklists, bug reports, test summary reports
 - **Tools:** Jira, TestRail, Trello, Postman, Chrome DevTools, Android Studio (Logcat, emulator), Git / GitHub
+- **Automation:** Selenium WebDriver, Playwright, UI smoke and regression suites, running tests in CI
 - **API & data:** REST API, HTTP / HTTPS, JSON, status codes, SQL (SELECT, JOIN, GROUP BY), PostgreSQL
 - **Process:** SDLC, STLC, Agile / Scrum, bug life cycle, severity and priority
 - **Development:** Python, Dart / Flutter, JavaScript / TypeScript, Next.js, FastAPI, HTML / CSS
@@ -23,6 +24,7 @@ Junior Manual QA Engineer who tests web, mobile and API products and has built e
 - Built and tested 8 products: Android and Flutter apps, web services and Telegram bots; 2 released on Google Play.
 - Wrote test plans, test cases and checklists; ran test scenarios in TestRail and tracked defects in Jira.
 - Tested REST APIs in Postman and debugged network and console errors in Chrome DevTools.
+- Automated UI smoke and regression checks with Selenium WebDriver and Playwright and ran them in CI.
 - Practised on commercial websites such as TakeCate: functional, UI and responsive layout testing.
 
 ### Procurement Manager — Reseller, Ukraine
@@ -87,6 +89,7 @@ A privacy-first productivity app that turns voice notes into structured tasks an
 *Service website · Next.js | Next.js, TypeScript, Telegram Bot API, JSON-LD* | https://moslyharmless.github.io/siteColorium/
 Website for a premium wallpaper painting service with a price calculator and leads delivered to Telegram.
 - Calculator logic with equivalence classes and boundary values
+- Playwright smoke tests for the calculator and forms, run in CI on every change
 - Form validation, spam protection and API rate limiting
 - Lead delivery to Telegram, including failures and retries
 - SEO: JSON-LD, sitemap, meta tags, Lighthouse

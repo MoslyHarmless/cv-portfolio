@@ -48,7 +48,7 @@ def json_ld(lang):
         "telephone": CONTACTS["phone_href"][4:],
         "address": {"@type": "PostalAddress", "addressLocality": "Zhytomyr", "addressCountry": "UA"},
         "knowsAbout": ["Manual testing", "Mobile testing", "Web testing", "API testing", "Regression testing",
-                       "Test design", "Jira", "TestRail", "Postman", "Chrome DevTools", "SQL", "Python", "Flutter"],
+                       "Test design", "Test automation", "Selenium", "Playwright", "iOS testing", "Jira", "TestRail", "Postman", "Chrome DevTools", "SQL", "Python", "Flutter"],
         "knowsLanguage": ["uk", "en"],
         "alumniOf": {"@type": "CollegeOrUniversity", "name": EDUCATION[0]["en"]["org"]},
         "sameAs": [CONTACTS["github_url"], CONTACTS["linkedin_url"], CONTACTS["telegram_url"]],
